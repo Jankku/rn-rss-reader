@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location';
 import LocationProvider from './data/LocationProvider';
+import Regions from './data/Regions';
 
 export default function App() {
   const [region, setRegion] = useState();
@@ -18,6 +19,8 @@ export default function App() {
         }
 
         const { latitude, longitude } = await LocationProvider.getLocation();
+        const region = await LocationProvider.getRegion(latitude, longitude);
+        setRegion(region);
       } catch (error) {
         setErrorMsg(error.message);
       }
@@ -28,6 +31,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Text>Region: {region ? region : '-'}</Text>
+      <Text>Feed ID: {region ? Regions[region] : '-'}</Text>
       {errorMsg ? alert(errorMsg) : null}
     </View>
   );

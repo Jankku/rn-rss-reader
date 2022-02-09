@@ -34,15 +34,13 @@ const LocationProvider = {
    * @returns Region response JSON
    */
   async getRegion(latitude, longitude) {
-    if (__DEV__) {
-      return 'North Ostrobothnia';
-    } else {
-      return await fetch(
-        `${LOCATION_BASE_URL}/reverse.php?key=${LOCATION_API_KEY}&lat=${latitude}&lon=${longitude}&zoom=8&format=json`
-      )
-        .then((res) => res.json())
-        .then((json) => json.address.county);
-    }
+    if (__DEV__) return 'North Ostrobothnia';
+
+    return await fetch(
+      `${LOCATION_BASE_URL}/reverse.php?key=${LOCATION_API_KEY}&lat=${latitude}&lon=${longitude}&zoom=8&format=json`
+    )
+      .then((res) => res.json())
+      .then((json) => json.address.county);
   },
 };
 
