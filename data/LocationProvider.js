@@ -10,10 +10,9 @@ const LocationProvider = {
   async getLocation() {
     const lastKnownPosition = await Location.getLastKnownPositionAsync({});
 
-    if (lastKnownPosition === null) {
+    if (lastKnownPosition == null) {
       const currentLocation = await Location.getCurrentPositionAsync({
-        mayShowUserSettingsDialog: false,
-        accuracy: Location.LocationAccuracy.Lowest,
+        accuracy: Location.Accuracy.Lowest,
       });
 
       return {
@@ -31,16 +30,16 @@ const LocationProvider = {
   /**
    * @param {number} latitude
    * @param {number} longitude
-   * @returns Region response JSON
+   * @returns Region
    */
   async getRegion(latitude, longitude) {
     if (__DEV__) return 'North Ostrobothnia';
 
-    return await fetch(
+    const response = await fetch(
       `${LOCATION_BASE_URL}/reverse.php?key=${LOCATION_API_KEY}&lat=${latitude}&lon=${longitude}&zoom=8&format=json`
-    )
-      .then((res) => res.json())
-      .then((json) => json.address.county);
+    );
+    const json = await response.json();
+    return String(json.address.county);
   },
 };
 

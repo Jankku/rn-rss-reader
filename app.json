@@ -3,6 +3,7 @@
     "name": "rn-rss-reader",
     "slug": "rn-rss-reader",
     "version": "1.0.0",
+    "userInterfaceStyle": "automatic",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -18,11 +19,11 @@
       "supportsTablet": true
     },
     "android": {
+      "permissions": ["ACCESS_COARSE_LOCATION"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      },
-      "permissions": ["ACCESS_COARSE_LOCATION"]
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
