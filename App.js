@@ -7,14 +7,14 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Alert, useColorScheme } from 'react-native';
 import * as NavigationBar from 'expo-navigation-bar';
 import { StatusBar } from 'expo-status-bar';
-import Home from './pages/Home';
+import Feed from './pages/Feed';
+import Details from './pages/Details';
 
 export const RegionContext = createContext('');
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   const scheme = useColorScheme();
-
   const [region, setRegion] = useState();
   const [showLocationAlert, setShowLocationAlert] = useState(false);
   const [location, setLocation] = useState();
@@ -57,7 +57,7 @@ export default function App() {
     <SafeAreaProvider>
       <StatusBar style="auto" />
       {showLocationAlert
-        ? Alert.alert('Hi!', "Please grant location permission. It's needed for loading your county's news feed.", [
+        ? Alert.alert('Hi!', "Please grant location permission. It's needed for loading your regions's news feed.", [
             // TODO: Add way to choose region manually
             {
               text: 'Grant permission',
@@ -71,8 +71,31 @@ export default function App() {
         : null}
       <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
         <RegionContext.Provider value={region}>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} options={{ title: region, headerTitleAlign: 'center' }} />
+          <Stack.Navigator
+            screenOptions={{
+              animation: 'fade_from_bottom',
+              headerStyle: {
+                backgroundColor: '#0E65CC',
+              },
+              headerTintColor: '#fff',
+              headerTitleAlign: 'center',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+            }}
+          >
+            <Stack.Screen
+              name="Feed"
+              component={Feed}
+              options={{
+                title: region,
+              }}
+            />
+            <Stack.Screen
+              name="Details"
+              component={Details}
+              options={{ title: '', headerTitleStyle: { fontWeight: '400' } }}
+            />
           </Stack.Navigator>
         </RegionContext.Provider>
       </NavigationContainer>

@@ -24,6 +24,7 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.11.0",
     "react-native-web": "0.17.1",
+    "react-native-webview": "11.15.0",
     "expo-navigation-bar": "~1.1.1"
   },
   "devDependencies": {
