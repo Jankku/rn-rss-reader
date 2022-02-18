@@ -12,7 +12,7 @@ function NewsItem({ title, description, imageUrl, onPress }) {
           flex: 1,
           flexDirection: 'row',
           paddingHorizontal: 12,
-          paddingVertical: 8,
+          paddingVertical: 16,
           width: Dimensions.get('window').width,
           backgroundColor: colors.background,
         }}
@@ -28,7 +28,8 @@ function NewsItem({ title, description, imageUrl, onPress }) {
               backgroundColor: `rgba(${dark ? '255, 255, 255' : '0, 0, 0'}, 0.1)`,
               width: 100,
               height: 100,
-              paddingRight: 20,
+              marginTop: 6,
+              marginLeft: 4,
               borderRadius: 8,
             }}
             source={{ uri: imageUrl }}
