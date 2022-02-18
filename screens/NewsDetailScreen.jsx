@@ -4,7 +4,7 @@ import { Dimensions, View } from 'react-native';
 import WebView from 'react-native-webview';
 import FeedController from '../data/FeedController';
 
-function Details({ navigation, route }) {
+function NewsDetailScreen({ navigation, route }) {
   const guid = route.params?.guid;
   const { colors } = useTheme();
   const [article, setArticle] = useState();
@@ -50,7 +50,7 @@ function Details({ navigation, route }) {
             uri: article.link,
           }}
         />
-      ) : article?.encoded ? (
+      ) : article?.encoded ? ( // Render HTML
         <WebView
           injectedJavaScript={injectedJS}
           injectedJavaScriptForMainFrameOnly
@@ -67,4 +67,4 @@ function Details({ navigation, route }) {
   );
 }
 
-export default Details;
+export default NewsDetailScreen;

@@ -1,6 +1,5 @@
 import { YLE_FEEDS_URL } from '@env';
 import { XMLParser } from 'fast-xml-parser';
-import data from './data';
 
 const FeedController = {
   parser: new XMLParser({
@@ -19,12 +18,6 @@ const FeedController = {
    * @param {string} id Feed ID
    */
   async getFeedById(id) {
-    if (__DEV__) {
-      const feedObj = this.parser.parse(data, true);
-      this.feed = feedObj;
-      return feedObj;
-    }
-
     const response = await fetch(`${YLE_FEEDS_URL}?publisherIds=YLE_UUTISET&concepts=${id}`);
     const feedText = await response.text();
     const feedObj = this.parser.parse(feedText, true);
