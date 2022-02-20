@@ -2,7 +2,7 @@
   "expo": {
     "name": "rn-rss-reader",
     "slug": "rn-rss-reader",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "userInterfaceStyle": "automatic",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.jankku.rnrssreader"
     },
     "web": {
       "favicon": "./assets/favicon.png"

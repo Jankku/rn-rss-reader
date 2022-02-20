@@ -1,0 +1,16 @@
+{
+  "build": {
+    "development": {
+      "env": {
+        "LOCATION_BASE_URL": "https://eu1.locationiq.com/v1/",
+        "YLE_FEEDS_BASE_URL": "https://feeds.yle.fi/uutiset/v1"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  },
+  "cli": {
+    "version": ">= 0.47.0"
+  }
+}
