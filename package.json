@@ -13,9 +13,11 @@
     "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
+    "@realm/react": "^0.1.0",
     "expo": "~44.0.0",
     "expo-location": "^14.0.2",
     "expo-navigation-bar": "~1.1.1",
+    "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
     "fast-xml-parser": "^4.0.2",
     "react": "17.0.1",
@@ -26,7 +28,7 @@
     "react-native-screens": "^3.11.0",
     "react-native-web": "0.17.1",
     "react-native-webview": "11.15.0",
-    "expo-dev-client": "~0.8.4"
+    "realm": "^10.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

@@ -10,7 +10,7 @@ const LocationProvider = {
   async getLocation() {
     const lastKnownPosition = await Location.getLastKnownPositionAsync({});
 
-    if (lastKnownPosition == null) {
+    if (lastKnownPosition === null) {
       const currentLocation = await Location.getCurrentPositionAsync({
         accuracy: Location.Accuracy.Lowest,
       });
@@ -39,7 +39,7 @@ const LocationProvider = {
       `${LOCATION_BASE_URL}/reverse.php?key=${LOCATION_API_KEY}&lat=${latitude}&lon=${longitude}&zoom=8&format=json`
     );
     const json = await response.json();
-    return String(json.address.county);
+    return json.address.county;
   },
 };
 

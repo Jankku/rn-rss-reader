@@ -1,6 +1,6 @@
+import { useContext, useLayoutEffect } from 'react';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useContext, useLayoutEffect } from 'react';
 import { RegionContext } from '../../App';
 import NewsDetailScreen from '../../screens/NewsDetailScreen';
 import NewsFeedScreen from '../../screens/NewsFeedScreen';
@@ -44,7 +44,9 @@ function NewsFeedStack({ navigation, route }) {
         component={NewsDetailScreen}
         options={{
           title: '',
-          headerTitleStyle: { fontWeight: '400' },
+          headerTitleStyle: {
+            fontWeight: '400',
+          },
         }}
       />
     </Stack.Navigator>

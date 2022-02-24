@@ -2,7 +2,9 @@ import { useTheme } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { Dimensions, View } from 'react-native';
 import WebView from 'react-native-webview';
+import ArticleSaveButton from '../components/NewsDetails/ArticleSaveButton';
 import FeedController from '../data/FeedController';
+import { newsItemToDbArticle, saveArticle } from '../data/local/ArticleController';
 
 function NewsDetailScreen({ navigation, route }) {
   const guid = route.params?.guid;
@@ -12,9 +14,18 @@ function NewsDetailScreen({ navigation, route }) {
 
   useEffect(() => {
     const item = FeedController.findItemById(guid);
-    navigation.setOptions({ title: item.title, headerTitleAlign: 'left' });
+    navigation.setOptions({
+      title: item.title,
+      headerTitleAlign: 'left',
+      headerRight: () => <ArticleSaveButton onPress={onSaveArticleButtonPress} />,
+    });
     setArticle(item);
   }, [guid]);
+
+  const onSaveArticleButtonPress = () => {
+    const dbArticle = newsItemToDbArticle(article);
+    saveArticle(dbArticle);
+  };
 
   const injectedJS = `
     if (window.location.href === 'about:blank') {

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { RegionContext } from '../App';
 import Regions from '../data/Regions';
-import NewsList from '../components/Feed/NewsList';
+import NewsList from '../components/NewsFeed/NewsList';
 import FeedController from '../data/FeedController';
 
 function NewsFeedScreen() {

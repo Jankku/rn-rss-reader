@@ -10,7 +10,7 @@ const FeedController = {
   }),
 
   /**
-   * RSS feed repsponse
+   * RSS feed response
    */
   feed: {},
 
@@ -31,7 +31,6 @@ const FeedController = {
    */
   findItemById(guid) {
     const item = this.feed.rss.channel.item.filter((item) => item.guid['#text'] === guid)[0];
-
     if (item.encoded === undefined) return item;
 
     const copy = { ...item };
