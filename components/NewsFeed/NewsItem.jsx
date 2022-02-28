@@ -6,7 +6,12 @@ function NewsItem({ title, description, imageUrl, onPress }) {
   const { colors, dark } = useTheme();
 
   return (
-    <Pressable onPress={onPress}>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => ({
+        backgroundColor: pressed ? colors.background : colors.card,
+      })}
+    >
       <View
         style={{
           flex: 1,
@@ -14,7 +19,6 @@ function NewsItem({ title, description, imageUrl, onPress }) {
           paddingHorizontal: 12,
           paddingVertical: 16,
           width: Dimensions.get('window').width,
-          backgroundColor: colors.background,
         }}
       >
         <View style={{ flex: 1 }}>

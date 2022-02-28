@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { RegionContext } from '../App';
 import Regions from '../data/Regions';
-import NewsList from '../components/NewsFeed/NewsList';
 import FeedController from '../data/FeedController';
+import NewsItem from '../components/NewsFeed/NewsItem';
+import ItemDivider from '../components/NewsFeed/ItemDivider';
 
-function NewsFeedScreen() {
+function NewsFeedScreen({ navigation }) {
   const region = useContext(RegionContext);
   const [regionId, setRegionId] = useState();
   const [newsItems, setNewsItems] = useState([]);
@@ -16,14 +17,26 @@ function NewsFeedScreen() {
 
   useEffect(() => {
     (async () => {
-      const res = await FeedController.getFeedById(regionId);
-      setNewsItems(res.rss.channel.item);
+      const feed = await FeedController.getFeedById(regionId);
+      setNewsItems(feed.rss.channel.item);
     })();
   }, [regionId]);
 
   return (
     <View style={{ flex: 1 }}>
-      <NewsList data={newsItems} />
+      <FlatList
+        data={newsItems}
+        keyExtractor={(item) => item.guid['#text']}
+        ItemSeparatorComponent={ItemDivider}
+        renderItem={({ item }) => (
+          <NewsItem
+            title={item?.title}
+            description={item?.description}
+            imageUrl={item?.enclosure?.url}
+            onPress={() => navigation.navigate('NewsDetail', { guid: item.guid['#text'] })}
+          />
+        )}
+      />
     </View>
   );
 }

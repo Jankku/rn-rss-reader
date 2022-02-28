@@ -1,3 +1,4 @@
+import 'expo-dev-client';
 import { createContext, useEffect, useState } from 'react';
 import * as Location from 'expo-location';
 import LocationProvider from './data/LocationProvider';
@@ -6,6 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Alert, useColorScheme } from 'react-native';
 import * as NavigationBar from 'expo-navigation-bar';
 import { StatusBar } from 'expo-status-bar';
+import { RootSiblingParent } from 'react-native-root-siblings';
 import TabNavigator from './components/Navigation/TabNavigator';
 
 export const RegionContext = createContext('');
@@ -55,9 +57,12 @@ export default function App() {
       <StatusBar style="light" />
       <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
         <RegionContext.Provider value={region}>
-          <TabNavigator />
+          <RootSiblingParent>
+            <TabNavigator />
+          </RootSiblingParent>
         </RegionContext.Provider>
       </NavigationContainer>
+
       {showLocationAlert
         ? Alert.alert('Hi!', "Please grant location permission. It's needed for loading your regions's news feed.", [
             // TODO: Add way to choose region manually

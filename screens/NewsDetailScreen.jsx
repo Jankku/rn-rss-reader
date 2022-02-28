@@ -2,29 +2,73 @@ import { useTheme } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { Dimensions, View } from 'react-native';
 import WebView from 'react-native-webview';
-import ArticleSaveButton from '../components/NewsDetails/ArticleSaveButton';
+import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
 import FeedController from '../data/FeedController';
-import { newsItemToDbArticle, saveArticle } from '../data/local/ArticleController';
+import SavedArticleController from '../data/local/SavedArticleController';
+import showToast from '../utils/toast';
 
 function NewsDetailScreen({ navigation, route }) {
   const guid = route.params?.guid;
   const { colors } = useTheme();
   const [article, setArticle] = useState();
+  const [isSaved, setIsSaved] = useState();
   const openWebView = article && article.encoded === undefined;
 
   useEffect(() => {
     const item = FeedController.findItemById(guid);
-    navigation.setOptions({
-      title: item.title,
-      headerTitleAlign: 'left',
-      headerRight: () => <ArticleSaveButton onPress={onSaveArticleButtonPress} />,
-    });
     setArticle(item);
+
+    const saved = SavedArticleController.isArticleSaved(guid);
+    setIsSaved(saved);
   }, [guid]);
 
-  const onSaveArticleButtonPress = () => {
-    const dbArticle = newsItemToDbArticle(article);
-    saveArticle(dbArticle);
+  useEffect(() => {
+    if (article) {
+      navigation.setOptions({
+        title: article.title,
+        headerTitleAlign: 'left',
+        headerRight: () => {
+          return (
+            <ArticleSaveButton
+              icon={isSaved ? 'star' : 'star-outline'}
+              onPress={() => {
+                if (!article) return;
+
+                if (isSaved) {
+                  deleteArticleAction();
+                } else {
+                  saveArticleAction();
+                }
+              }}
+            />
+          );
+        },
+      });
+    }
+  }, [article, isSaved]);
+
+  const saveArticleAction = () => {
+    try {
+      const dbArticle = SavedArticleController.articleToDbArticle(article);
+      SavedArticleController.saveArticle(dbArticle);
+      setIsSaved(true);
+      showToast('Article saved');
+    } catch (error) {
+      showToast("Error: Couldn't save article");
+      console.error(error);
+    }
+  };
+
+  const deleteArticleAction = () => {
+    try {
+      const dbArticle = SavedArticleController.getArticleById(guid);
+      SavedArticleController.deleteArticle(dbArticle);
+      setIsSaved(false);
+      showToast('Article deleted');
+    } catch (error) {
+      showToast("Error: Couldn't delete article");
+      console.error(error);
+    }
   };
 
   const injectedJS = `
@@ -65,9 +109,6 @@ function NewsDetailScreen({ navigation, route }) {
         <WebView
           injectedJavaScript={injectedJS}
           injectedJavaScriptForMainFrameOnly
-          onMessage={() => {
-            window.ReactNativeWebView.postMessage(JSON.stringify(window.location));
-          }}
           scalesPageToFit={false}
           source={{
             html: article.encoded,

@@ -53,4 +53,4 @@ function NewsFeedStack({ navigation, route }) {
   );
 }
 
-export { NewsFeedStack };
+export default NewsFeedStack;
