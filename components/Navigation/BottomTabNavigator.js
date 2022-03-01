@@ -4,7 +4,7 @@ import NewsFeedStack from './NewsFeedStack';
 import SavedArticleStack from './SavedArticleStack';
 import SettingsStack from './SettingsStack';
 
-function TabNavigator() {
+function BottomTabNavigator() {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -37,4 +37,4 @@ function TabNavigator() {
   );
 }
 
-export default TabNavigator;
+export default BottomTabNavigator;

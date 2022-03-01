@@ -8,7 +8,7 @@ import { Alert, useColorScheme } from 'react-native';
 import * as NavigationBar from 'expo-navigation-bar';
 import { StatusBar } from 'expo-status-bar';
 import { RootSiblingParent } from 'react-native-root-siblings';
-import TabNavigator from './components/Navigation/TabNavigator';
+import BottomTabNavigator from './components/Navigation/BottomTabNavigator';
 
 export const RegionContext = createContext('');
 
@@ -58,7 +58,7 @@ export default function App() {
       <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
         <RegionContext.Provider value={region}>
           <RootSiblingParent>
-            <TabNavigator />
+            <BottomTabNavigator />
           </RootSiblingParent>
         </RegionContext.Provider>
       </NavigationContainer>
