@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import NewsFeedStack from './NewsFeedStack';
 import SavedArticleStack from './SavedArticleStack';
+import SettingsStack from './SettingsStack';
 
 function TabNavigator() {
   const Tab = createBottomTabNavigator();
@@ -31,7 +32,7 @@ function TabNavigator() {
     >
       <Tab.Screen name="NewsFeedTab" component={NewsFeedStack} options={{ title: 'Feed' }} />
       <Tab.Screen name="SavedTab" component={SavedArticleStack} options={{ title: 'Saved' }} />
-      <Tab.Screen name="SettingsTab" component={NewsFeedStack} options={{ title: 'Settings' }} />
+      <Tab.Screen name="SettingsTab" component={SettingsStack} options={{ title: 'Settings' }} />
     </Tab.Navigator>
   );
 }
