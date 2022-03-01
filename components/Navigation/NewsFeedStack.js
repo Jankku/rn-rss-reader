@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RegionContext } from '../../App';
 import NewsDetailScreen from '../../screens/NewsDetailScreen';
 import NewsFeedScreen from '../../screens/NewsFeedScreen';
+import AppbarStyle from './AppbarStyle';
 
 function NewsFeedStack({ navigation, route }) {
   const Stack = createNativeStackNavigator();
@@ -19,19 +20,7 @@ function NewsFeedStack({ navigation, route }) {
   }, [navigation, route]);
 
   return (
-    <Stack.Navigator
-      screenOptions={{
-        animation: 'fade_from_bottom',
-        headerStyle: {
-          backgroundColor: '#0E65CC',
-        },
-        headerTintColor: '#fff',
-        headerTitleAlign: 'center',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}
-    >
+    <Stack.Navigator screenOptions={AppbarStyle}>
       <Stack.Screen
         name="NewsFeed"
         component={NewsFeedScreen}

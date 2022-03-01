@@ -1,23 +1,12 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SettingsScreen from '../../screens/SettingsScreen';
+import AppbarStyle from './AppbarStyle';
 
 function SettingsStack() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator
-      screenOptions={{
-        animation: 'fade_from_bottom',
-        headerStyle: {
-          backgroundColor: '#0E65CC',
-        },
-        headerTintColor: '#fff',
-        headerTitleAlign: 'center',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}
-    >
+    <Stack.Navigator screenOptions={AppbarStyle}>
       <Stack.Screen
         name="Settings"
         component={SettingsScreen}

@@ -3,6 +3,7 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SavedArticleDetailScreen from '../../screens/SavedArticleDetailScreen';
 import SavedArticlesScreen from '../../screens/SavedArticlesScreen';
+import AppbarStyle from './AppbarStyle';
 
 function SavedArticleStack({ navigation, route }) {
   const Stack = createNativeStackNavigator();
@@ -17,19 +18,7 @@ function SavedArticleStack({ navigation, route }) {
   }, [navigation, route]);
 
   return (
-    <Stack.Navigator
-      screenOptions={{
-        animation: 'fade_from_bottom',
-        headerStyle: {
-          backgroundColor: '#0E65CC',
-        },
-        headerTintColor: '#fff',
-        headerTitleAlign: 'center',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}
-    >
+    <Stack.Navigator screenOptions={AppbarStyle}>
       <Stack.Screen
         name="SavedArticleFeed"
         component={SavedArticlesScreen}
