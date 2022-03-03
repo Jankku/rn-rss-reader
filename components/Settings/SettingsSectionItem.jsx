@@ -33,7 +33,7 @@ function SettingsSectionItem({ title, value, link, icon }) {
 
   return (
     <Pressable onPress={openLink} style={styles.container}>
-      <Ionicons name={icon ?? null} size={24} color={'#000000'} style={styles.icon} />
+      <Ionicons name={icon ?? null} size={24} color={colors.text} style={styles.icon} />
       <View>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.value}>{value}</Text>
