@@ -5,7 +5,7 @@ import WebView from 'react-native-webview';
 import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
 import FeedController from '../data/FeedController';
 import SavedArticleController from '../data/local/SavedArticleController';
-import showToast from '../utils/toast';
+import useToast from '../utils/useToast';
 
 function NewsDetailScreen({ navigation, route }) {
   const guid = route.params?.guid;
@@ -13,6 +13,7 @@ function NewsDetailScreen({ navigation, route }) {
   const [article, setArticle] = useState();
   const [isSaved, setIsSaved] = useState();
   const openWebView = article && article.encoded === undefined;
+  const { showToast } = useToast();
 
   useEffect(() => {
     const item = FeedController.findItemById(guid);
@@ -105,7 +106,7 @@ function NewsDetailScreen({ navigation, route }) {
             uri: article.link,
           }}
         />
-      ) : article?.encoded ? ( // Render HTML
+      ) : article?.encoded ? (
         <WebView
           injectedJavaScript={injectedJS}
           injectedJavaScriptForMainFrameOnly
