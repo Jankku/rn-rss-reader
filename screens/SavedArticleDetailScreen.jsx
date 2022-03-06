@@ -24,17 +24,14 @@ function SavedArticleDetailScreen({ navigation, route }) {
       navigation.setOptions({
         title: article.title,
         headerTitleAlign: 'left',
-        headerRight: () => {
-          return (
-            <ArticleSaveButton
-              icon={isSaved ? 'star' : 'star-outline'}
-              onPress={() => {
-                if (!article) return;
-                if (isSaved) deleteArticleAction();
-              }}
-            />
-          );
-        },
+        headerRight: () => (
+          <ArticleSaveButton
+            isSaved={isSaved}
+            onPress={() => {
+              if (article && isSaved) deleteArticleAction();
+            }}
+          />
+        ),
       });
     }
   }, [article, isSaved]);
