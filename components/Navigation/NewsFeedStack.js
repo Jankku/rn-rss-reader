@@ -8,7 +8,7 @@ import AppbarStyle from './AppbarStyle';
 
 function NewsFeedStack({ navigation, route }) {
   const Stack = createNativeStackNavigator();
-  const region = useContext(RegionContext);
+  const { region } = useContext(RegionContext);
 
   useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);

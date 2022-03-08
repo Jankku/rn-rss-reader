@@ -9,8 +9,9 @@ import * as NavigationBar from 'expo-navigation-bar';
 import { StatusBar } from 'expo-status-bar';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import BottomTabNavigator from './components/Navigation/BottomTabNavigator';
+import RegionController from './data/RegionController';
 
-export const RegionContext = createContext('');
+export const RegionContext = createContext({});
 
 export default function App() {
   const scheme = useColorScheme();
@@ -23,14 +24,14 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      try {
+      if (await RegionController.shouldUseLocation()) {
         const { granted, canAskAgain } = await Location.requestForegroundPermissionsAsync();
         setLocationPermGranted(granted);
 
         if (!granted && canAskAgain) {
           setShowLocationAlert(true);
         }
-      } catch (ignored) {}
+      }
     })();
   }, []);
 
@@ -45,18 +46,23 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      if (location !== undefined) {
-        const region = await LocationProvider.getRegion(location.latitude, location.longitude);
-        setRegion(region);
-      }
+      const region = location
+        ? await LocationProvider.getRegion(location.latitude, location.longitude)
+        : await RegionController.getRegion();
+      setRegion(region);
     })();
   }, [location]);
+
+  const updateRegion = async (region) => {
+    setRegion(region);
+    await RegionController.saveRegion(region);
+  };
 
   return (
     <SafeAreaProvider>
       <StatusBar style="light" />
       <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <RegionContext.Provider value={region}>
+        <RegionContext.Provider value={{ region, updateRegion }}>
           <RootSiblingParent>
             <BottomTabNavigator />
           </RootSiblingParent>
@@ -64,14 +70,22 @@ export default function App() {
       </NavigationContainer>
 
       {showLocationAlert
-        ? Alert.alert('Hi!', "Please grant location permission. It's needed for loading your regions's news feed.", [
-            // TODO: Add way to choose region manually
+        ? Alert.alert('Hi!', 'You can either use location or manually select a region', [
             {
-              text: 'Grant permission',
+              text: 'Manual',
+              onPress: async () => {
+                setShowLocationAlert(false);
+                await RegionController.setShouldUseLocation(false);
+                await RegionController.saveRegion('Kotimaa');
+              },
+            },
+            {
+              text: 'Location',
               onPress: async () => {
                 setShowLocationAlert(false);
                 const { granted } = await Location.requestForegroundPermissionsAsync();
                 setLocationPermGranted(granted);
+                await RegionController.setShouldUseLocation(granted);
               },
             },
           ])

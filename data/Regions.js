@@ -1,4 +1,6 @@
 const Regions = {
+  Kotimaa: '18-34837',
+  Ulkomaat: '18-34953',
   Lapland: '18-139752',
   'North Ostrobothnia': '18-148154',
   'Central Ostrobothnia': '18-135629',

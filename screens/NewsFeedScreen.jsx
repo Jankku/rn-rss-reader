@@ -5,11 +5,14 @@ import Regions from '../data/Regions';
 import FeedController from '../data/FeedController';
 import NewsItem from '../components/NewsFeed/NewsItem';
 import ItemDivider from '../components/NewsFeed/ItemDivider';
+import RegionMenuButton from '../components/NewsFeed/RegionMenuButton';
+import RegionModal from '../components/NewsFeed/RegionModal';
 
 function NewsFeedScreen({ navigation }) {
-  const region = useContext(RegionContext);
+  const { region } = useContext(RegionContext);
   const [regionId, setRegionId] = useState();
   const [newsItems, setNewsItems] = useState([]);
+  const [regionModalVisible, setRegionModalVisible] = useState(false);
 
   useEffect(() => {
     setRegionId(Regions[region]);
@@ -21,6 +24,12 @@ function NewsFeedScreen({ navigation }) {
       setNewsItems(feed.rss.channel.item);
     })();
   }, [regionId]);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <RegionMenuButton onPress={() => setRegionModalVisible(true)} />,
+    });
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>
@@ -37,6 +46,8 @@ function NewsFeedScreen({ navigation }) {
           />
         )}
       />
+
+      <RegionModal isVisible={regionModalVisible} onClose={() => setRegionModalVisible(false)} />
     </View>
   );
 }
