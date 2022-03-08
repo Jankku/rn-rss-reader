@@ -3,6 +3,8 @@
     "name": "rn-rss-reader",
     "slug": "rn-rss-reader",
     "version": "0.0.1",
+    "privacy": "hidden",
+    "githubUrl": "https://github.com/Jankku/rn-rss-reader",
     "userInterfaceStyle": "automatic",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
