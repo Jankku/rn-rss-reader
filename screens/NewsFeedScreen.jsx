@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { FlatList, View } from 'react-native';
 import { RegionContext } from '../App';
 import Regions from '../data/Regions';
@@ -13,6 +13,7 @@ function NewsFeedScreen({ navigation }) {
   const [regionId, setRegionId] = useState();
   const [newsItems, setNewsItems] = useState([]);
   const [regionModalVisible, setRegionModalVisible] = useState(false);
+  const listRef = useRef();
 
   useEffect(() => {
     setRegionId(Regions[region]);
@@ -31,23 +32,27 @@ function NewsFeedScreen({ navigation }) {
     });
   }, []);
 
+  const _renderItem = ({ item }) => (
+    <NewsItem
+      title={item?.title}
+      description={item?.description}
+      imageUrl={item?.enclosure?.url}
+      onPress={() => navigation.navigate('NewsDetail', { guid: item.guid['#text'] })}
+    />
+  );
+
   return (
     <View style={{ flex: 1 }}>
       <FlatList
+        ref={listRef}
         data={newsItems}
         keyExtractor={(item) => item.guid['#text']}
         ItemSeparatorComponent={ItemDivider}
-        renderItem={({ item }) => (
-          <NewsItem
-            title={item?.title}
-            description={item?.description}
-            imageUrl={item?.enclosure?.url}
-            onPress={() => navigation.navigate('NewsDetail', { guid: item.guid['#text'] })}
-          />
-        )}
+        initialNumToRender={5}
+        renderItem={_renderItem}
       />
 
-      <RegionModal isVisible={regionModalVisible} onClose={() => setRegionModalVisible(false)} />
+      <RegionModal listRef={listRef} isVisible={regionModalVisible} onClose={() => setRegionModalVisible(false)} />
     </View>
   );
 }

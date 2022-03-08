@@ -6,7 +6,7 @@ import RegionModalItem from './RegionModalItem';
 import useToast from '../../utils/useToast';
 import { RegionContext } from '../../App';
 
-function RegionModal({ isVisible, onClose }) {
+function RegionModal({ listRef, isVisible, onClose }) {
   const { updateRegion } = useContext(RegionContext);
   const { colors } = useTheme();
   const { showToast } = useToast();
@@ -46,28 +46,27 @@ function RegionModal({ isVisible, onClose }) {
     },
   });
 
+  const _renderItem = ({ item }) => (
+    <RegionModalItem
+      name={item[0]}
+      onPress={async () => {
+        try {
+          await updateRegion(item[0]);
+        } catch (error) {
+          showToast(error);
+        }
+        onClose();
+        listRef.current.scrollToOffset({ animated: true, offset: 0 });
+      }}
+    />
+  );
+
   return (
     <Modal animationType="fade" transparent={true} visible={isVisible} onRequestClose={onClose}>
       <View style={styles.container}>
         <View style={styles.modalView}>
           <Text style={styles.title}>Choose region</Text>
-          <FlatList
-            data={regions}
-            renderItem={({ item }) => (
-              <RegionModalItem
-                name={item[0]}
-                onPress={async () => {
-                  try {
-                    await updateRegion(item[0]);
-                  } catch (error) {
-                    showToast(error);
-                  }
-                  onClose();
-                }}
-              />
-            )}
-            keyExtractor={(item) => item[1]}
-          />
+          <FlatList data={regions} renderItem={_renderItem} keyExtractor={(item) => item[1]} />
         </View>
       </View>
     </Modal>
