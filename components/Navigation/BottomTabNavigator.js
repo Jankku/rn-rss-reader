@@ -19,7 +19,7 @@ function BottomTabNavigator() {
               iconName = focused ? 'newspaper' : 'newspaper-outline';
               break;
             case 'SavedTab':
-              iconName = focused ? 'star' : 'star-outline';
+              iconName = focused ? 'heart' : 'heart-outline';
               break;
             case 'SettingsTab':
               iconName = focused ? 'settings-sharp' : 'settings-outline';
