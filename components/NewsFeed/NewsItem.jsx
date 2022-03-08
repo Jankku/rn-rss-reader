@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTheme } from '@react-navigation/native';
 import { Dimensions, Image, Pressable, Text, View } from 'react-native';
 import { stringOrPlaceholder } from '../../utils/stringutils';
@@ -44,4 +45,4 @@ function NewsItem({ title, description, imageUrl, onPress }) {
   );
 }
 
-export default NewsItem;
+export default memo(NewsItem);

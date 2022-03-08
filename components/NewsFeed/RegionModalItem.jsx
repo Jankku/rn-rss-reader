@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTheme } from '@react-navigation/native';
 import { Text, Pressable } from 'react-native';
 import { stringOrPlaceholder } from '../../utils/stringutils';
@@ -20,4 +21,4 @@ function RegionModalItem({ name, onPress }) {
   );
 }
 
-export default RegionModalItem;
+export default memo(RegionModalItem);

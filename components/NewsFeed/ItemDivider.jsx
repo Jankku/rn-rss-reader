@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTheme } from '@react-navigation/native';
 import { View } from 'react-native';
 
@@ -14,4 +15,4 @@ function ItemDivider() {
   );
 }
 
-export default ItemDivider;
+export default memo(ItemDivider);

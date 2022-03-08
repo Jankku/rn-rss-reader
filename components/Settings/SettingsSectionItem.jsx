@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { openBrowserAsync } from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
 
-function SettingsSectionItem({ title, value, link, icon }) {
+function SettingsSectionItem({ item }) {
   const { colors } = useTheme();
 
   const styles = StyleSheet.create({
@@ -28,15 +28,15 @@ function SettingsSectionItem({ title, value, link, icon }) {
   });
 
   const openLink = () => {
-    if (link) openBrowserAsync(link);
+    if (item.link) openBrowserAsync(link);
   };
 
   return (
     <Pressable onPress={openLink} style={styles.container}>
-      <Ionicons name={icon ?? null} size={24} color={colors.text} style={styles.icon} />
+      <Ionicons name={item.icon} size={24} color={colors.text} style={styles.icon} />
       <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.value}>{value}</Text>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.value}>{item.value}</Text>
       </View>
     </Pressable>
   );

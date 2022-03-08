@@ -1,4 +1,4 @@
-import { useContext, useLayoutEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RegionContext } from '../../App';
@@ -10,7 +10,7 @@ function NewsFeedStack({ navigation, route }) {
   const Stack = createNativeStackNavigator();
   const { region } = useContext(RegionContext);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName === 'NewsDetail') {
       navigation.setOptions({ tabBarStyle: { display: 'none' } });

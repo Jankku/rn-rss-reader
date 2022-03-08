@@ -1,4 +1,3 @@
-import 'expo-dev-client';
 import { createContext, useEffect, useState } from 'react';
 import * as Location from 'expo-location';
 import LocationProvider from './data/LocationProvider';

@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SavedArticleDetailScreen from '../../screens/SavedArticleDetailScreen';
@@ -8,7 +8,7 @@ import AppbarStyle from './AppbarStyle';
 function SavedArticleStack({ navigation, route }) {
   const Stack = createNativeStackNavigator();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     navigation.setOptions({
       tabBarStyle: {

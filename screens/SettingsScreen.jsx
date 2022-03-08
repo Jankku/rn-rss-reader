@@ -30,13 +30,15 @@ function SettingsScreen() {
     },
   ];
 
+  const _renderItem = ({ item }) => <SettingsSectionItem item={item} />;
+
+  const _renderSectionHeader = ({ section: { title } }) => <SettingsSectionHeader title={title} />;
+
   return (
     <SectionList
       sections={settingsData}
-      renderSectionHeader={({ section: { title } }) => <SettingsSectionHeader title={title} />}
-      renderItem={({ item }) => (
-        <SettingsSectionItem title={item.title} value={item.value} link={item.link} icon={item.icon} />
-      )}
+      renderSectionHeader={_renderSectionHeader}
+      renderItem={_renderItem}
       keyExtractor={(item, index) => item + index}
       ItemSeparatorComponent={ItemDivider}
     />
