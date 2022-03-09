@@ -28,7 +28,7 @@ function SettingsSectionItem({ item }) {
   });
 
   const openLink = () => {
-    if (item.link) openBrowserAsync(link);
+    if (item.link) openBrowserAsync(item.link);
   };
 
   return (
