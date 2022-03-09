@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
 import SavedArticleController from '../data/local/SavedArticleController';
-import useToast from '../utils/useToast';
+import useToast from '../hooks/useToast';
 
 function SavedArticleDetailScreen({ navigation, route }) {
   const guid = route.params.guid;

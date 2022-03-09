@@ -5,7 +5,7 @@ import WebView from 'react-native-webview';
 import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
 import FeedController from '../data/FeedController';
 import SavedArticleController from '../data/local/SavedArticleController';
-import useToast from '../utils/useToast';
+import useToast from '../hooks/useToast';
 
 function NewsDetailScreen({ navigation, route }) {
   const guid = route.params?.guid;

@@ -3,7 +3,7 @@ import { FlatList, View } from 'react-native';
 import SavedArticleController from '../data/local/SavedArticleController';
 import NewsItem from '../components/NewsFeed/NewsItem';
 import ItemDivider from '../components/NewsFeed/ItemDivider';
-import useToast from '../utils/useToast';
+import useToast from '../hooks/useToast';
 
 function SavedArticlesScreen({ navigation }) {
   const [articles, setArticles] = useState();

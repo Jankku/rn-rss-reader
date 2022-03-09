@@ -3,7 +3,7 @@ import { useTheme } from '@react-navigation/native';
 import { Modal, View, Text, FlatList, StyleSheet, useWindowDimensions } from 'react-native';
 import Regions from '../../data/Regions';
 import RegionModalItem from './RegionModalItem';
-import useToast from '../../utils/useToast';
+import useToast from '../../hooks/useToast';
 import { RegionContext } from '../../App';
 
 function RegionModal({ listRef, isVisible, onClose }) {
