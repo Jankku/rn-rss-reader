@@ -18,8 +18,9 @@ export default function App() {
   const [showLocationAlert, setShowLocationAlert] = useState(false);
   const [location, setLocation] = useState();
   const [locationPermGranted, setLocationPermGranted] = useState();
+  const isDarkMode = scheme === 'dark';
 
-  NavigationBar.setBackgroundColorAsync(scheme === 'dark' ? 'black' : 'white');
+  NavigationBar.setBackgroundColorAsync(isDarkMode ? 'black' : 'white');
 
   useEffect(() => {
     (async () => {
@@ -60,7 +61,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <StatusBar style="light" />
-      <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
         <RegionContext.Provider value={{ region, updateRegion }}>
           <RootSiblingParent>
             <BottomTabNavigator />
