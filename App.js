@@ -10,21 +10,42 @@ import { RootSiblingParent } from 'react-native-root-siblings';
 import BottomTabNavigator from './components/Navigation/BottomTabNavigator';
 import RegionController from './data/RegionController';
 
-export const RegionContext = createContext({});
+export const RegionContext = createContext({
+  region: '',
+  updateRegion: () => {},
+});
+
+export const LocationContext = createContext({
+  location: {
+    latitude: 0.0,
+    longitude: 0.0,
+  },
+  shouldUseLocation: false,
+  updateShouldUseLocation: () => {},
+});
 
 export default function App() {
   const scheme = useColorScheme();
-  const [region, setRegion] = useState();
-  const [showLocationAlert, setShowLocationAlert] = useState(false);
-  const [location, setLocation] = useState();
-  const [locationPermGranted, setLocationPermGranted] = useState();
   const isDarkMode = scheme === 'dark';
+
+  const [region, setRegion] = useState('');
+  const [location, setLocation] = useState();
+  const [showLocationAlert, setShowLocationAlert] = useState(false);
+  const [shouldUseLocation, setShouldUseLocation] = useState();
+  const [locationPermGranted, setLocationPermGranted] = useState();
 
   NavigationBar.setBackgroundColorAsync(isDarkMode ? 'black' : 'white');
 
   useEffect(() => {
     (async () => {
-      if (await RegionController.shouldUseLocation()) {
+      const useLocation = await RegionController.shouldUseLocation();
+      setShouldUseLocation(useLocation);
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      if (shouldUseLocation && !locationPermGranted) {
         const { granted, canAskAgain } = await Location.requestForegroundPermissionsAsync();
         setLocationPermGranted(granted);
 
@@ -33,23 +54,23 @@ export default function App() {
         }
       }
     })();
-  }, []);
+  }, [locationPermGranted, shouldUseLocation]);
 
   useEffect(() => {
     (async () => {
-      if (locationPermGranted) {
+      if (locationPermGranted && shouldUseLocation) {
         const { latitude, longitude } = await LocationProvider.getLocation();
         setLocation({ latitude, longitude });
       }
     })();
-  }, [locationPermGranted]);
+  }, [locationPermGranted, shouldUseLocation]);
 
   useEffect(() => {
     (async () => {
-      const region = location
+      const newRegion = location
         ? await LocationProvider.getRegion(location.latitude, location.longitude)
         : await RegionController.getRegion();
-      setRegion(region);
+      setRegion(newRegion);
     })();
   }, [location]);
 
@@ -58,14 +79,21 @@ export default function App() {
     await RegionController.saveRegion(region);
   };
 
+  const updateShouldUseLocation = async (value) => {
+    setShouldUseLocation(value);
+    await RegionController.setShouldUseLocation(value);
+  };
+
   return (
     <SafeAreaProvider>
       <StatusBar style="light" />
       <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
         <RegionContext.Provider value={{ region, updateRegion }}>
-          <RootSiblingParent>
-            <BottomTabNavigator />
-          </RootSiblingParent>
+          <LocationContext.Provider value={{ location, shouldUseLocation, updateShouldUseLocation }}>
+            <RootSiblingParent>
+              <BottomTabNavigator />
+            </RootSiblingParent>
+          </LocationContext.Provider>
         </RegionContext.Provider>
       </NavigationContainer>
 
@@ -85,7 +113,7 @@ export default function App() {
                 setShowLocationAlert(false);
                 const { granted } = await Location.requestForegroundPermissionsAsync();
                 setLocationPermGranted(granted);
-                await RegionController.setShouldUseLocation(granted);
+                updateShouldUseLocation(granted);
               },
             },
           ])
