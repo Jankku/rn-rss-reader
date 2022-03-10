@@ -7,7 +7,7 @@ import { Alert, useColorScheme } from 'react-native';
 import * as NavigationBar from 'expo-navigation-bar';
 import { StatusBar } from 'expo-status-bar';
 import { RootSiblingParent } from 'react-native-root-siblings';
-import BottomTabNavigator from './components/Navigation/BottomTabNavigator';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
 import RegionController from './data/RegionController';
 
 export const RegionContext = createContext({

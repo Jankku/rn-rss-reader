@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RegionContext } from '../../App';
-import NewsDetailScreen from '../../screens/NewsDetailScreen';
-import NewsFeedScreen from '../../screens/NewsFeedScreen';
+import { RegionContext } from '../App';
+import NewsDetailScreen from '../screens/NewsDetailScreen';
+import NewsFeedScreen from '../screens/NewsFeedScreen';
 import AppbarStyle from './AppbarStyle';
 
 function NewsFeedStack({ navigation, route }) {

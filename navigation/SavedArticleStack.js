@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SavedArticleDetailScreen from '../../screens/SavedArticleDetailScreen';
-import SavedArticlesScreen from '../../screens/SavedArticlesScreen';
+import SavedArticleDetailScreen from '../screens/SavedArticleDetailScreen';
+import SavedArticlesScreen from '../screens/SavedArticlesScreen';
 import AppbarStyle from './AppbarStyle';
 
 function SavedArticleStack({ navigation, route }) {
