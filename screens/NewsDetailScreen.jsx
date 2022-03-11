@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
-import { Dimensions, View } from 'react-native';
+import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
 import FeedController from '../data/FeedController';
@@ -10,10 +10,11 @@ import useToast from '../hooks/useToast';
 function NewsDetailScreen({ navigation, route }) {
   const guid = route.params?.guid;
   const { colors } = useTheme();
+  const { showToast } = useToast();
   const [article, setArticle] = useState();
   const [isSaved, setIsSaved] = useState();
   const openWebView = article && article.encoded === undefined;
-  const { showToast } = useToast();
+  const fontSize = '2.25rem';
 
   useEffect(() => {
     const item = FeedController.findItemById(guid);
@@ -70,14 +71,8 @@ function NewsDetailScreen({ navigation, route }) {
 
   const injectedJS = `
     if (window.location.href === 'about:blank') {
-      document.body.style.backgroundColor = "${colors.background}";
       document.body.style.color = "${colors.text}";
-
-      const images = document.querySelectorAll("img");
-      images.forEach((i) => {
-        i.width = ${Dimensions.get('window').width / 1.1};
-        i.height = ${Dimensions.get('window').width / 1.777};
-      });
+      document.body.style.fontSize = "${fontSize}";
 
       const figures = document.querySelectorAll("figure");
       figures.forEach((f) => {
@@ -104,11 +99,15 @@ function NewsDetailScreen({ navigation, route }) {
         />
       ) : article?.encoded ? (
         <WebView
-          injectedJavaScript={injectedJS}
           injectedJavaScriptForMainFrameOnly
-          scalesPageToFit={false}
+          scalesPageToFit
+          injectedJavaScript={injectedJS}
+          originWhitelist={['*']}
           source={{
             html: article.encoded,
+          }}
+          style={{
+            backgroundColor: colors.background,
           }}
         />
       ) : null}
