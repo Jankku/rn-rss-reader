@@ -4,15 +4,16 @@ import { Modal, View, Text, FlatList, StyleSheet, useWindowDimensions } from 're
 import Regions from '../../data/Regions';
 import RegionModalItem from './RegionModalItem';
 import useToast from '../../hooks/useToast';
-import { LocationContext, RegionContext } from '../../App';
+import { RegionContext } from '../../context/RegionContext';
+import { LocationContext } from '../../context/LocationContext';
 
 function RegionModal({ listRef, isVisible, onClose }) {
   const { updateRegion } = useContext(RegionContext);
   const { updateShouldUseLocation } = useContext(LocationContext);
   const { colors } = useTheme();
   const { showToast } = useToast();
-  const width = useWindowDimensions().width;
-  const height = useWindowDimensions().height * 0.5;
+  const modalWidth = useWindowDimensions().width;
+  const modalHeight = useWindowDimensions().height * 0.5;
   const regions = [['Automatic', 'automatic']].concat(Object.entries(Regions));
 
   const styles = StyleSheet.create({
@@ -23,8 +24,8 @@ function RegionModal({ listRef, isVisible, onClose }) {
       top: 55,
     },
     modalView: {
-      width: width,
-      height: height,
+      width: modalWidth,
+      height: modalHeight,
       backgroundColor: colors.background,
       color: colors.text,
       shadowColor: '#000',

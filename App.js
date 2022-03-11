@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import * as Location from 'expo-location';
 import LocationProvider from './data/LocationProvider';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
@@ -9,110 +9,89 @@ import { StatusBar } from 'expo-status-bar';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import RegionController from './data/RegionController';
-
-export const RegionContext = createContext({
-  region: '',
-  updateRegion: () => {},
-});
-
-export const LocationContext = createContext({
-  location: {
-    latitude: 0.0,
-    longitude: 0.0,
-  },
-  shouldUseLocation: false,
-  updateShouldUseLocation: () => {},
-});
+import { RegionContext } from './context/RegionContext';
+import { LocationContext } from './context/LocationContext';
 
 export default function App() {
+  const { updateRegion } = useContext(RegionContext);
+  const {
+    location,
+    shouldUseLocation,
+    showLocationPermissionAlert,
+    hasLocationPermission,
+    updateLocation,
+    updateShouldUseLocation,
+    updateShowLocationPermissionAlert,
+    updateHasLocationPermission,
+  } = useContext(LocationContext);
   const scheme = useColorScheme();
   const isDarkMode = scheme === 'dark';
-
-  const [region, setRegion] = useState('');
-  const [location, setLocation] = useState();
-  const [showLocationAlert, setShowLocationAlert] = useState(false);
-  const [shouldUseLocation, setShouldUseLocation] = useState();
-  const [locationPermGranted, setLocationPermGranted] = useState();
 
   NavigationBar.setBackgroundColorAsync(isDarkMode ? 'black' : 'white');
 
   useEffect(() => {
     (async () => {
       const useLocation = await RegionController.shouldUseLocation();
-      setShouldUseLocation(useLocation);
+      updateShouldUseLocation(useLocation);
     })();
   }, []);
 
   useEffect(() => {
     (async () => {
-      if (shouldUseLocation && !locationPermGranted) {
+      if (shouldUseLocation && !hasLocationPermission) {
         const { granted, canAskAgain } = await Location.requestForegroundPermissionsAsync();
-        setLocationPermGranted(granted);
+        updateHasLocationPermission(granted);
 
         if (!granted && canAskAgain) {
-          setShowLocationAlert(true);
+          updateShowLocationPermissionAlert(true);
         }
       }
     })();
-  }, [locationPermGranted, shouldUseLocation]);
+  }, [hasLocationPermission, shouldUseLocation]);
 
   useEffect(() => {
     (async () => {
-      if (locationPermGranted && shouldUseLocation) {
+      if (hasLocationPermission && shouldUseLocation) {
         const { latitude, longitude } = await LocationProvider.getLocation();
-        setLocation({ latitude, longitude });
+        updateLocation({ latitude, longitude });
       }
     })();
-  }, [locationPermGranted, shouldUseLocation]);
+  }, [hasLocationPermission, shouldUseLocation]);
 
   useEffect(() => {
     (async () => {
       const newRegion = location
         ? await LocationProvider.getRegion(location.latitude, location.longitude)
         : await RegionController.getRegion();
-      setRegion(newRegion);
+      updateRegion(newRegion);
     })();
   }, [location]);
-
-  const updateRegion = async (region) => {
-    setRegion(region);
-    await RegionController.saveRegion(region);
-  };
-
-  const updateShouldUseLocation = async (value) => {
-    setShouldUseLocation(value);
-    await RegionController.setShouldUseLocation(value);
-  };
 
   return (
     <SafeAreaProvider>
       <StatusBar style="light" />
       <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
-        <RegionContext.Provider value={{ region, updateRegion }}>
-          <LocationContext.Provider value={{ location, shouldUseLocation, updateShouldUseLocation }}>
-            <RootSiblingParent>
-              <BottomTabNavigator />
-            </RootSiblingParent>
-          </LocationContext.Provider>
-        </RegionContext.Provider>
+        <RootSiblingParent>
+          <BottomTabNavigator />
+        </RootSiblingParent>
       </NavigationContainer>
 
-      {showLocationAlert
+      {showLocationPermissionAlert
         ? Alert.alert('Hi!', 'You can either use location or manually select a region', [
             {
               text: 'Manual',
               onPress: async () => {
-                setShowLocationAlert(false);
-                await RegionController.setShouldUseLocation(false);
+                updateShowLocationPermissionAlert(false);
+                updateShouldUseLocation(false);
                 await RegionController.saveRegion('Kotimaa');
               },
             },
             {
               text: 'Location',
               onPress: async () => {
-                setShowLocationAlert(false);
+                updateShowLocationPermissionAlert(false);
                 const { granted } = await Location.requestForegroundPermissionsAsync();
-                setLocationPermGranted(granted);
+                updateHasLocationPermission(granted);
                 updateShouldUseLocation(granted);
               },
             },

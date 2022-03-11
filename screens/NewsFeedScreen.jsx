@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 import { FlatList, View } from 'react-native';
-import { RegionContext } from '../App';
 import Regions from '../data/Regions';
 import FeedController from '../data/FeedController';
 import NewsItem from '../components/NewsFeed/NewsItem';
 import ItemDivider from '../components/NewsFeed/ItemDivider';
 import RegionMenuButton from '../components/NewsFeed/RegionMenuButton';
 import RegionModal from '../components/NewsFeed/RegionModal';
+import { RegionContext } from '../context/RegionContext';
 
 function NewsFeedScreen({ navigation }) {
   const { region } = useContext(RegionContext);
