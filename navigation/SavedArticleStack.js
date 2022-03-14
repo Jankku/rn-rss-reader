@@ -1,12 +1,15 @@
-import { useEffect } from 'react';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { useEffect, useContext } from 'react';
+import { getFocusedRouteNameFromRoute, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SavedArticleDetailScreen from '../screens/SavedArticleDetailScreen';
 import SavedArticlesScreen from '../screens/SavedArticlesScreen';
-import AppbarStyle from './AppbarStyle';
+import { ThemeContext } from '../context/ThemeContext';
 
 function SavedArticleStack({ navigation, route }) {
   const Stack = createNativeStackNavigator();
+  const { colors } = useTheme();
+  const { isDark } = useContext(ThemeContext);
+  const headerBackground = isDark ? colors.card : colors.primary;
 
   useEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
@@ -18,7 +21,19 @@ function SavedArticleStack({ navigation, route }) {
   }, [navigation, route]);
 
   return (
-    <Stack.Navigator screenOptions={AppbarStyle}>
+    <Stack.Navigator
+      screenOptions={{
+        animation: 'fade_from_bottom',
+        headerStyle: {
+          backgroundColor: headerBackground,
+        },
+        headerTintColor: colors.headerText,
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+    >
       <Stack.Screen
         name="SavedArticleFeed"
         component={SavedArticlesScreen}

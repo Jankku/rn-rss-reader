@@ -1,9 +1,7 @@
 import { useTheme } from '@react-navigation/native';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { openBrowserAsync } from 'expo-web-browser';
-import { Ionicons } from '@expo/vector-icons';
+import { Pressable, StyleSheet } from 'react-native';
 
-function SettingsSectionItem({ item }) {
+function SettingsSectionItem({ onPress, children }) {
   const { colors } = useTheme();
 
   const styles = StyleSheet.create({
@@ -27,17 +25,9 @@ function SettingsSectionItem({ item }) {
     },
   });
 
-  const openLink = () => {
-    if (item.link) openBrowserAsync(item.link);
-  };
-
   return (
-    <Pressable onPress={openLink} style={styles.container}>
-      <Ionicons name={item.icon} size={24} color={colors.text} style={styles.icon} />
-      <View>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.value}>{item.value}</Text>
-      </View>
+    <Pressable onPress={onPress} style={styles.container}>
+      {children}
     </Pressable>
   );
 }

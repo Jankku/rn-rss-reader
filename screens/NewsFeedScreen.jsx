@@ -7,9 +7,11 @@ import ItemDivider from '../components/NewsFeed/ItemDivider';
 import RegionMenuButton from '../components/NewsFeed/RegionMenuButton';
 import RegionModal from '../components/NewsFeed/RegionModal';
 import { RegionContext } from '../context/RegionContext';
+import { useTheme } from '@react-navigation/native';
 
 function NewsFeedScreen({ navigation }) {
   const { region } = useContext(RegionContext);
+  const { colors } = useTheme();
   const [regionId, setRegionId] = useState();
   const [newsItems, setNewsItems] = useState([]);
   const [regionModalVisible, setRegionModalVisible] = useState(false);
@@ -28,7 +30,7 @@ function NewsFeedScreen({ navigation }) {
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <RegionMenuButton onPress={() => setRegionModalVisible(true)} />,
+      headerRight: () => <RegionMenuButton color={colors.headerText} onPress={() => setRegionModalVisible(true)} />,
     });
   }, []);
 

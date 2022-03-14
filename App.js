@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
 import * as Location from 'expo-location';
 import LocationProvider from './data/LocationProvider';
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Alert, useColorScheme } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import * as NavigationBar from 'expo-navigation-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
@@ -13,6 +13,7 @@ import { RegionContext } from './context/RegionContext';
 import { LocationContext } from './context/LocationContext';
 
 export default function App() {
+  const { colors } = useTheme();
   const { updateRegion } = useContext(RegionContext);
   const {
     location,
@@ -24,10 +25,8 @@ export default function App() {
     updateShowLocationPermissionAlert,
     updateHasLocationPermission,
   } = useContext(LocationContext);
-  const scheme = useColorScheme();
-  const isDarkMode = scheme === 'dark';
 
-  NavigationBar.setBackgroundColorAsync(isDarkMode ? 'black' : 'white');
+  NavigationBar.setBackgroundColorAsync(colors.card);
 
   useEffect(() => {
     (async () => {
@@ -69,12 +68,10 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar style="light" />
-      <NavigationContainer theme={isDarkMode ? DarkTheme : DefaultTheme}>
-        <RootSiblingParent>
-          <BottomTabNavigator />
-        </RootSiblingParent>
-      </NavigationContainer>
+      <StatusBar style={'light'} />
+      <RootSiblingParent>
+        <BottomTabNavigator />
+      </RootSiblingParent>
 
       {showLocationPermissionAlert
         ? Alert.alert('Hi!', 'You can either use location or manually select a region', [

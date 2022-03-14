@@ -1,14 +1,17 @@
 import { useContext, useEffect } from 'react';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { getFocusedRouteNameFromRoute, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NewsDetailScreen from '../screens/NewsDetailScreen';
 import NewsFeedScreen from '../screens/NewsFeedScreen';
-import AppbarStyle from './AppbarStyle';
 import { RegionContext } from '../context/RegionContext';
+import { ThemeContext } from '../context/ThemeContext';
 
 function NewsFeedStack({ navigation, route }) {
   const Stack = createNativeStackNavigator();
   const { region } = useContext(RegionContext);
+  const { colors } = useTheme();
+  const { isDark } = useContext(ThemeContext);
+  const headerBackground = isDark ? colors.card : colors.primary;
 
   useEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
@@ -20,7 +23,19 @@ function NewsFeedStack({ navigation, route }) {
   }, [navigation, route]);
 
   return (
-    <Stack.Navigator screenOptions={AppbarStyle}>
+    <Stack.Navigator
+      screenOptions={{
+        animation: 'fade_from_bottom',
+        headerStyle: {
+          backgroundColor: headerBackground,
+        },
+        headerTintColor: colors.headerText,
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+    >
       <Stack.Screen
         name="NewsFeed"
         component={NewsFeedScreen}

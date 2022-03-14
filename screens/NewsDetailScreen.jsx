@@ -31,6 +31,7 @@ function NewsDetailScreen({ navigation, route }) {
         headerTitleAlign: 'left',
         headerRight: () => (
           <ArticleSaveButton
+            color={colors.headerText}
             isSaved={isSaved}
             onPress={() => {
               if (article && isSaved) {
@@ -73,6 +74,7 @@ function NewsDetailScreen({ navigation, route }) {
     if (window.location.href === 'about:blank') {
       document.body.style.color = "${colors.text}";
       document.body.style.fontSize = "${fontSize}";
+      document.body.style.padding = "8px";
 
       const figures = document.querySelectorAll("figure");
       figures.forEach((f) => {
@@ -107,7 +109,7 @@ function NewsDetailScreen({ navigation, route }) {
             html: article.encoded,
           }}
           style={{
-            backgroundColor: colors.background,
+            backgroundColor: colors.card,
           }}
         />
       ) : null}

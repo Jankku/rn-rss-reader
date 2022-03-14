@@ -1,3 +1,4 @@
+import { useTheme } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import WebView from 'react-native-webview';
@@ -7,9 +8,10 @@ import useToast from '../hooks/useToast';
 
 function SavedArticleDetailScreen({ navigation, route }) {
   const guid = route.params.guid;
+  const { showToast } = useToast();
+  const { colors } = useTheme();
   const [article, setArticle] = useState();
   const [isSaved, setIsSaved] = useState();
-  const { showToast } = useToast();
 
   useEffect(() => {
     const item = SavedArticleController.getArticleById(guid);
@@ -27,6 +29,7 @@ function SavedArticleDetailScreen({ navigation, route }) {
         headerRight: () => (
           <ArticleSaveButton
             isSaved={isSaved}
+            color={colors.headerText}
             onPress={() => {
               if (article && isSaved) deleteArticleAction();
             }}
