@@ -6,22 +6,8 @@ function SettingsSectionItem({ onPress, children }) {
 
   const styles = StyleSheet.create({
     container: {
-      flexDirection: 'row',
-      alignContent: 'center',
-      alignItems: 'center',
       backgroundColor: colors.card,
       padding: 16,
-    },
-    icon: {
-      paddingEnd: 16,
-    },
-    title: {
-      color: colors.text,
-      fontSize: 16,
-      fontWeight: '700',
-    },
-    value: {
-      color: colors.text,
     },
   });
 

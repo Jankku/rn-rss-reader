@@ -41,10 +41,12 @@ function AboutSection() {
 
   const _renderItem = ({ item }) => (
     <SettingsSectionItem onPress={() => openLink(item)}>
-      <Ionicons name={item.icon} size={24} color={colors.text} style={styles.icon} />
-      <View>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.value}>{item.value}</Text>
+      <View style={styles.container}>
+        <Ionicons name={item.icon} size={24} color={colors.text} style={styles.icon} />
+        <View>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.value}>{item.value}</Text>
+        </View>
       </View>
     </SettingsSectionItem>
   );
@@ -52,6 +54,11 @@ function AboutSection() {
   const _renderSectionHeader = ({ section: { title } }) => <SettingsSectionHeader title={title} />;
 
   const styles = StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      alignContent: 'center',
+      alignItems: 'center',
+    },
     icon: {
       paddingEnd: 16,
     },

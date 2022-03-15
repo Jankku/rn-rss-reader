@@ -14,10 +14,24 @@ function ThemeSection() {
     <>
       <SettingsSectionHeader title={'Theme'} />
       <SettingsSectionItem>
-        <Ionicons name={'sunny'} size={24} color={colors.text} style={{ paddingEnd: 16 }} />
-        <View style={{ alignItems: 'baseline' }}>
-          <Text style={{ color: colors.text }}>Dark mode {isDark ? 'enabled' : 'disabled'}</Text>
-          <Switch value={isDark} onValueChange={toggleTheme} thumbColor={colors.primary} />
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
+          <Ionicons name={'sunny'} size={24} color={colors.text} style={{ paddingEnd: 16 }} />
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexGrow: 1,
+            }}
+          >
+            <Text style={{ color: colors.text }}>Dark mode</Text>
+            <Switch value={isDark} onValueChange={toggleTheme} thumbColor={colors.primary} />
+          </View>
         </View>
       </SettingsSectionItem>
     </>
