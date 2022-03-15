@@ -14,7 +14,8 @@ function NewsDetailScreen({ navigation, route }) {
   const [article, setArticle] = useState();
   const [isSaved, setIsSaved] = useState();
   const openWebView = article && article.encoded === undefined;
-  const fontSize = '2.25rem';
+  const bodyFontSize = '2.25rem';
+  const figureFontSize = '2.0rem';
 
   useEffect(() => {
     const item = FeedController.findItemById(guid);
@@ -73,13 +74,19 @@ function NewsDetailScreen({ navigation, route }) {
   const injectedJS = `
     if (window.location.href === 'about:blank') {
       document.body.style.color = "${colors.text}";
-      document.body.style.fontSize = "${fontSize}";
+      document.body.style.fontSize = "${bodyFontSize}";
       document.body.style.padding = "8px";
 
       const figures = document.querySelectorAll("figure");
       figures.forEach((f) => {
-        f.style.padding = 0;
         f.style.margin = 0;
+        f.style.fontSize = "${figureFontSize}";
+        f.style.fontStyle = "italic";
+      });
+
+      const images = document.querySelectorAll("img");
+      images.forEach((i) => {
+        i.style.marginRight = "16px";
       });
 
       const links = document.querySelectorAll("a");
