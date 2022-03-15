@@ -55,9 +55,9 @@ function AboutSection() {
 
   const styles = StyleSheet.create({
     container: {
-      flexDirection: 'row',
       alignContent: 'center',
       alignItems: 'center',
+      flexDirection: 'row',
     },
     icon: {
       paddingEnd: 16,

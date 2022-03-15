@@ -13,7 +13,10 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "eslint --ext .js --ext .jsx .",
+    "lint:fix": "eslint --fix --ext .js --ext .jsx .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.15.0",
@@ -42,6 +45,12 @@
     "realm": "^10.13.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "eslint": "^8.11.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "prettier": "^2.5.1"
   }
 }

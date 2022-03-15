@@ -6,7 +6,7 @@ import { useTheme } from '@react-navigation/native';
 
 function SettingsStack() {
   const Stack = createNativeStackNavigator();
-  const { theme, isDark } = useContext(ThemeContext);
+  const { isDark } = useContext(ThemeContext);
   const { colors } = useTheme();
   const headerBackground = isDark ? colors.card : colors.primary;
 

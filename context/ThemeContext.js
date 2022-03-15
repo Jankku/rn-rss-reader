@@ -12,23 +12,21 @@ export function ThemeContextProvider({ children }) {
   const [theme, setTheme] = useState(lightTheme);
   const [isDark, setIsDark] = useState(false);
 
-  const {
-    Theme: { DARK, LIGHT },
-  } = ThemeController;
+  const { Theme } = ThemeController;
 
   useEffect(() => {
     (async () => {
       const currentTheme = await ThemeController.getTheme();
-      setIsDark(currentTheme === DARK);
+      setIsDark(currentTheme === Theme.DARK);
     })();
-  }, []);
+  }, [Theme]);
 
   useEffect(() => {
     (async () => {
       setTheme(isDark ? darkTheme : lightTheme);
-      await ThemeController.setTheme(isDark ? DARK : LIGHT);
+      await ThemeController.setTheme(isDark ? Theme.DARK : Theme.LIGHT);
     })();
-  }, [isDark]);
+  }, [isDark, Theme]);
 
   const toggleTheme = () => setIsDark((prev) => !prev);
 

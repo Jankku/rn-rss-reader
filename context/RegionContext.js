@@ -14,5 +14,7 @@ export function RegionContextProvider({ children }) {
     await RegionController.saveRegion(region);
   };
 
-  return <RegionContext.Provider value={{ region, updateRegion }}>{children}</RegionContext.Provider>;
+  return (
+    <RegionContext.Provider value={{ region, updateRegion }}>{children}</RegionContext.Provider>
+  );
 }

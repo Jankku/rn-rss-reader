@@ -18,16 +18,16 @@ function RegionModal({ listRef, isVisible, onClose }) {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
       alignItems: 'center',
+      flex: 1,
       position: 'absolute',
       top: 55,
     },
     modalView: {
-      width: modalWidth,
-      height: modalHeight,
       backgroundColor: colors.background,
       color: colors.text,
+      elevation: 5,
+      height: modalHeight,
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -35,16 +35,16 @@ function RegionModal({ listRef, isVisible, onClose }) {
       },
       shadowOpacity: 0.25,
       shadowRadius: 4,
-      elevation: 5,
+      width: modalWidth,
     },
     title: {
+      borderBottomColor: colors.border,
+      borderBottomWidth: 1,
       color: colors.text,
       fontSize: 20,
       fontWeight: '700',
       paddingHorizontal: 16,
       paddingVertical: 8,
-      borderBottomWidth: 1,
-      borderBottomColor: colors.border,
     },
   });
 

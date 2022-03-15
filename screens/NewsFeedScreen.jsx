@@ -30,7 +30,9 @@ function NewsFeedScreen({ navigation }) {
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <RegionMenuButton color={colors.headerText} onPress={() => setRegionModalVisible(true)} />,
+      headerRight: () => (
+        <RegionMenuButton color={colors.headerText} onPress={() => setRegionModalVisible(true)} />
+      ),
     });
   }, []);
 
@@ -54,7 +56,11 @@ function NewsFeedScreen({ navigation }) {
         renderItem={_renderItem}
       />
 
-      <RegionModal listRef={listRef} isVisible={regionModalVisible} onClose={() => setRegionModalVisible(false)} />
+      <RegionModal
+        listRef={listRef}
+        isVisible={regionModalVisible}
+        onClose={() => setRegionModalVisible(false)}
+      />
     </View>
   );
 }

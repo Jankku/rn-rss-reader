@@ -15,11 +15,9 @@ function NewsFeedStack({ navigation, route }) {
 
   useEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
-    if (routeName === 'NewsDetail') {
-      navigation.setOptions({ tabBarStyle: { display: 'none' } });
-    } else {
-      navigation.setOptions({ tabBarStyle: { display: 'flex' } });
-    }
+    navigation.setOptions({
+      tabBarStyle: { display: routeName === 'NewsDetail' ? 'none' : 'flex' },
+    });
   }, [navigation, route]);
 
   return (

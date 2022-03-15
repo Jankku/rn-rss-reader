@@ -1,0 +1,14 @@
+.expo-shared
+.expo
+.env
+.env.example
+.prettierrc.json
+babel.config.js
+metro.config.js
+eas.json
+node_modules
+README.md
+package.json
+package-lock.json
+android
+assets

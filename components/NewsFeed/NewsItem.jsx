@@ -23,7 +23,9 @@ function NewsItem({ title, description, imageUrl, onPress }) {
         }}
       >
         <View style={{ flex: 1 }}>
-          <Text style={{ color: colors.text, fontWeight: '700' }}>{stringOrPlaceholder(title)}</Text>
+          <Text style={{ color: colors.text, fontWeight: '700' }}>
+            {stringOrPlaceholder(title)}
+          </Text>
           <Text style={{ color: colors.text }}>{stringOrPlaceholder(description)}</Text>
         </View>
         <View style={{ paddingLeft: 4 }}>

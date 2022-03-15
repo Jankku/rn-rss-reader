@@ -18,7 +18,9 @@ const FeedController = {
    * @param {string} id Feed ID
    */
   async getFeedById(id) {
-    const response = await fetch(`${YLE_FEEDS_BASE_URL}/recent.rss?publisherIds=YLE_UUTISET&concepts=${id}`);
+    const response = await fetch(
+      `${YLE_FEEDS_BASE_URL}/recent.rss?publisherIds=YLE_UUTISET&concepts=${id}`
+    );
     const feedText = await response.text();
     const feedObj = this.parser.parse(feedText, true);
     this.feed = feedObj;
