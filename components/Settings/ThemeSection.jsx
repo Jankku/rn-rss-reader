@@ -29,7 +29,15 @@ function ThemeSection() {
               flexGrow: 1,
             }}
           >
-            <Text style={{ color: colors.text }}>Dark mode</Text>
+            <Text
+              style={{
+                color: colors.text,
+                fontSize: 16,
+                fontWeight: '700',
+              }}
+            >
+              Dark mode
+            </Text>
             <Switch value={isDark} onValueChange={toggleTheme} thumbColor={colors.primary} />
           </View>
         </View>
