@@ -4,7 +4,6 @@ const ThemeController = {
   Theme: {
     LIGHT: 'light',
     DARK: 'dark',
-    AUTOMATIC: 'automatic',
   },
 
   /**
@@ -15,8 +14,8 @@ const ThemeController = {
       const theme = await AsyncStorage.getItem('theme');
 
       if (theme === null) {
-        await this.saveTheme(this.Theme.AUTOMATIC);
-        return this.Theme.AUTOMATIC;
+        await this.saveTheme(this.Theme.LIGHT);
+        return this.Theme.LIGHT;
       }
 
       return theme;
