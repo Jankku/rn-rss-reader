@@ -23,7 +23,7 @@ module.exports = {
   ignorePatterns: ['node_modules', 'android', '.expo', '.expo-shared', '*.config.js'],
   rules: {
     'react/prop-types': 'off',
-    'prettier/prettier': 'error',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
   settings: {
     react: {
