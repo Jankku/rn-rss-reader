@@ -6,7 +6,8 @@
         "YLE_FEEDS_BASE_URL": "https://feeds.yle.fi/uutiset/v1"
       },
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "credentialsSource": "local"
       }
     }
   },
