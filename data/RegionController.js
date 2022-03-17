@@ -44,7 +44,7 @@ const RegionController = {
         return false;
       }
 
-      return Boolean(useLocation);
+      return useLocation === 'true';
     } catch (error) {
       throw new Error("Couldn't get useLocation value");
     }
