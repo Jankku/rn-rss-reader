@@ -14,7 +14,7 @@ const ThemeController = {
       const theme = await AsyncStorage.getItem('theme');
 
       if (theme === null) {
-        await this.saveTheme(this.Theme.LIGHT);
+        await this.setTheme(this.Theme.LIGHT);
         return this.Theme.LIGHT;
       }
 
