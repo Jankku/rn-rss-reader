@@ -1,5 +1,5 @@
 import { View, Text, SectionList, StyleSheet } from 'react-native';
-import { nativeApplicationVersion } from 'expo-application';
+import { applicationName, nativeApplicationVersion } from 'expo-application';
 import { openBrowserAsync } from 'expo-web-browser';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@react-navigation/native';
@@ -12,7 +12,7 @@ const aboutSectionData = [
     title: 'About',
     data: [
       {
-        title: 'RSS Reader',
+        title: `${applicationName ?? '-'}`,
         value: `${nativeApplicationVersion ?? '-'}`,
         icon: 'logo-android',
       },
