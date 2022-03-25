@@ -29,7 +29,7 @@ function NewsFeedScreen({ navigation }) {
         <RegionMenuButton color={colors.headerText} onPress={() => setRegionModalVisible(true)} />
       ),
     });
-  }, []);
+  }, [colors.headerText, navigation]);
 
   const _renderItem = ({ item }) => (
     <NewsItem
@@ -47,7 +47,6 @@ function NewsFeedScreen({ navigation }) {
         data={newsItems}
         keyExtractor={(item) => item.guid['#text']}
         ItemSeparatorComponent={ItemDivider}
-        initialNumToRender={5}
         renderItem={_renderItem}
       />
 

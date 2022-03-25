@@ -33,7 +33,7 @@ export default function App() {
       const useLocation = await RegionController.shouldUseLocation();
       updateShouldUseLocation(useLocation);
     })();
-  }, []);
+  }, [updateShouldUseLocation]);
 
   useEffect(() => {
     (async () => {
@@ -46,7 +46,12 @@ export default function App() {
         }
       }
     })();
-  }, [hasLocationPermission, shouldUseLocation]);
+  }, [
+    hasLocationPermission,
+    shouldUseLocation,
+    updateHasLocationPermission,
+    updateShowLocationPermissionAlert,
+  ]);
 
   useEffect(() => {
     (async () => {
@@ -55,7 +60,7 @@ export default function App() {
         updateLocation({ latitude, longitude });
       }
     })();
-  }, [hasLocationPermission, shouldUseLocation]);
+  }, [hasLocationPermission, shouldUseLocation, updateLocation]);
 
   useEffect(() => {
     (async () => {
@@ -64,7 +69,7 @@ export default function App() {
         : await RegionController.getRegion();
       updateRegion(newRegion);
     })();
-  }, [location]);
+  }, [location, updateRegion]);
 
   return (
     <SafeAreaProvider>
