@@ -1,5 +1,5 @@
+import { useEffect, useState, useCallback } from 'react';
 import { useTheme } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
@@ -19,9 +19,9 @@ function NewsDetailScreen({ navigation, route }) {
 
   useEffect(() => {
     const item = FeedController.findItemById(guid);
-    setArticle(item);
-
     const saved = SavedArticleController.isArticleSaved(guid);
+
+    setArticle(item);
     setIsSaved(saved);
   }, [guid]);
 
@@ -45,9 +45,9 @@ function NewsDetailScreen({ navigation, route }) {
         ),
       });
     }
-  }, [article, isSaved]);
+  }, [article, colors.headerText, deleteArticleAction, isSaved, navigation, saveArticleAction]);
 
-  const saveArticleAction = () => {
+  const saveArticleAction = useCallback(() => {
     try {
       const dbArticle = SavedArticleController.articleToDbArticle(article);
       SavedArticleController.saveArticle(dbArticle);
@@ -57,9 +57,9 @@ function NewsDetailScreen({ navigation, route }) {
       showToast("Error: Couldn't save article");
       console.error(error);
     }
-  };
+  }, [article, showToast]);
 
-  const deleteArticleAction = () => {
+  const deleteArticleAction = useCallback(() => {
     try {
       const dbArticle = SavedArticleController.getArticleById(guid);
       SavedArticleController.deleteArticle(dbArticle);
@@ -69,7 +69,7 @@ function NewsDetailScreen({ navigation, route }) {
       showToast("Error: Couldn't delete article");
       console.error(error);
     }
-  };
+  }, [guid, showToast]);
 
   const injectedJS = `
     if (window.location.href === 'about:blank') {

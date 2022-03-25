@@ -12,21 +12,16 @@ import { useTheme } from '@react-navigation/native';
 function NewsFeedScreen({ navigation }) {
   const { region } = useContext(RegionContext);
   const { colors } = useTheme();
-  const [regionId, setRegionId] = useState();
   const [newsItems, setNewsItems] = useState([]);
   const [regionModalVisible, setRegionModalVisible] = useState(false);
   const listRef = useRef();
 
   useEffect(() => {
-    setRegionId(Regions[region]);
-  }, [region]);
-
-  useEffect(() => {
     (async () => {
-      const feed = await FeedController.getFeedById(regionId);
+      const feed = await FeedController.getFeedById(Regions[region]);
       setNewsItems(feed.rss.channel.item);
     })();
-  }, [regionId]);
+  }, [region]);
 
   useEffect(() => {
     navigation.setOptions({
@@ -34,7 +29,7 @@ function NewsFeedScreen({ navigation }) {
         <RegionMenuButton color={colors.headerText} onPress={() => setRegionModalVisible(true)} />
       ),
     });
-  }, []);
+  }, [colors.headerText, navigation]);
 
   const _renderItem = ({ item }) => (
     <NewsItem
@@ -52,7 +47,6 @@ function NewsFeedScreen({ navigation }) {
         data={newsItems}
         keyExtractor={(item) => item.guid['#text']}
         ItemSeparatorComponent={ItemDivider}
-        initialNumToRender={5}
         renderItem={_renderItem}
       />
 
