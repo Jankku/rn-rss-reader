@@ -1,7 +1,8 @@
 package com.jankku.rnrssreader;
 import expo.modules.devlauncher.DevLauncherController;
 
-import android.app.Application;
+import androidx.multidex.MultiDexApplication;
+
 import android.content.Context;
 import android.content.res.Configuration;
 import androidx.annotation.NonNull;
@@ -21,7 +22,7 @@ import com.facebook.react.bridge.JSIModulePackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
+public class MainApplication extends MultiDexApplication implements ReactApplication {
   private final ReactNativeHost mReactNativeHost = new ReactNativeHostWrapper(
     this,
     new ReactNativeHost(this) {
