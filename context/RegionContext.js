@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useMemo } from 'react';
 import RegionController from '../data/RegionController';
 
 export const RegionContext = createContext({
@@ -14,7 +14,7 @@ export function RegionContextProvider({ children }) {
     await RegionController.saveRegion(region);
   };
 
-  return (
-    <RegionContext.Provider value={{ region, updateRegion }}>{children}</RegionContext.Provider>
-  );
+  const value = useMemo(() => ({ region, updateRegion }), [region]);
+
+  return <RegionContext.Provider value={value}>{children}</RegionContext.Provider>;
 }

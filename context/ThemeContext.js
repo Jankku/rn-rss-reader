@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useMemo } from 'react';
 import { darkTheme, lightTheme } from '../theme';
 import { NavigationContainer } from '@react-navigation/native';
 import ThemeController from '../data/ThemeController';
@@ -30,8 +30,10 @@ export function ThemeContextProvider({ children }) {
 
   const toggleTheme = () => setIsDark((prev) => !prev);
 
+  const value = useMemo(() => ({ isDark, toggleTheme }), [isDark]);
+
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={value}>
       <NavigationContainer theme={theme}>{children}</NavigationContainer>
     </ThemeContext.Provider>
   );

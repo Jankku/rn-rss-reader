@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useMemo } from 'react';
 import RegionController from '../data/RegionController';
 
 export const LocationContext = createContext({
@@ -29,8 +29,8 @@ export function LocationContextProvider({ children }) {
   };
 
   const updateShouldUseLocation = async (value) => {
-    setShouldUseLocation(value);
     await RegionController.setShouldUseLocation(value);
+    setShouldUseLocation(value);
   };
 
   const updateShowLocationPermissionAlert = (value) => {
@@ -41,20 +41,19 @@ export function LocationContextProvider({ children }) {
     setHasLocationPermission(value);
   };
 
-  return (
-    <LocationContext.Provider
-      value={{
-        location,
-        shouldUseLocation,
-        showLocationPermissionAlert,
-        hasLocationPermission,
-        updateLocation,
-        updateShouldUseLocation,
-        updateShowLocationPermissionAlert,
-        updateHasLocationPermission,
-      }}
-    >
-      {children}
-    </LocationContext.Provider>
+  const value = useMemo(
+    () => ({
+      location,
+      shouldUseLocation,
+      showLocationPermissionAlert,
+      hasLocationPermission,
+      updateLocation,
+      updateShouldUseLocation,
+      updateShowLocationPermissionAlert,
+      updateHasLocationPermission,
+    }),
+    [hasLocationPermission, location, shouldUseLocation, showLocationPermissionAlert]
   );
+
+  return <LocationContext.Provider value={value}>{children}</LocationContext.Provider>;
 }
