@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import Regions from '../data/Regions';
 import FeedController from '../data/FeedController';
 import NewsItem from '../components/NewsFeed/NewsItem';
@@ -8,6 +8,7 @@ import RegionMenuButton from '../components/NewsFeed/RegionMenuButton';
 import RegionModal from '../components/NewsFeed/RegionModal';
 import { RegionContext } from '../context/RegionContext';
 import { useTheme } from '@react-navigation/native';
+import ListEmptyComponent from '../components/NewsFeed/ListEmptyComponent';
 
 function NewsFeedScreen({ navigation }) {
   const { region } = useContext(RegionContext);
@@ -48,6 +49,8 @@ function NewsFeedScreen({ navigation }) {
         keyExtractor={(item) => item.guid['#text']}
         ItemSeparatorComponent={ItemDivider}
         renderItem={_renderItem}
+        ListEmptyComponent={<ListEmptyComponent text={"Couldn't find news"} />}
+        contentContainerStyle={newsItems.length === 0 && styles.listContainerStyle}
       />
 
       <RegionModal
@@ -58,5 +61,9 @@ function NewsFeedScreen({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  listContainerStyle: { alignItems: 'center', flexGrow: 1, justifyContent: 'center' },
+});
 
 export default NewsFeedScreen;
