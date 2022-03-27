@@ -37,6 +37,7 @@ function NewsFeedScreen({ navigation }) {
       title={item?.title}
       description={item?.description}
       imageUrl={item?.enclosure?.url}
+      pubDate={item.pubDate}
       onPress={() => navigation.navigate('NewsDetail', { guid: item.guid['#text'] })}
     />
   );

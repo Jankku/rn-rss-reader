@@ -1,5 +1,6 @@
 import { YLE_FEEDS_BASE_URL } from '@env';
 import { XMLParser } from 'fast-xml-parser';
+import { RFC2822ToDateTime } from '../utils/dateutils';
 
 const FeedController = {
   parser: new XMLParser({
@@ -28,15 +29,23 @@ const FeedController = {
   },
 
   /**
-   * @param {string} guid Item ID
+   * @param {string} guid - Item ID
    * @returns {object} News item
    */
   findItemById(guid) {
     const item = this.feed.rss.channel.item.filter((item) => item.guid['#text'] === guid)[0];
     if (item.encoded === undefined) return item;
 
+    return this.itemToDisplayItem(item);
+  },
+
+  /**
+   * @param {object} item - News item
+   */
+  itemToDisplayItem(item) {
     const copy = { ...item };
-    copy.encoded = `<h2>${copy.title}</h2><h4>${copy.description}</h4>${copy.encoded}`;
+    copy.pubDate = RFC2822ToDateTime(copy.pubDate);
+    copy.encoded = `<h2>${copy.title}</h2><h4>${copy.description}</h4><p>${copy.pubDate}</p>${copy.encoded}`;
     copy.encoded = String(copy.encoded).split(`src="//`).join('src="https://');
     return copy;
   },

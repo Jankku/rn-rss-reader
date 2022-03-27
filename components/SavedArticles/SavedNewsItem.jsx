@@ -3,9 +3,8 @@ import { StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { Dimensions, Image, Pressable, Text, View } from 'react-native';
 import { stringOrPlaceholder } from '../../utils/stringutils';
-import { RFC2822ToTimeOrDate } from '../../utils/dateutils';
 
-function NewsItem({ title, description, imageUrl, pubDate, onPress }) {
+function SavedNewsItem({ title, description, imageUrl, pubDate, onPress }) {
   const { colors, dark } = useTheme();
 
   const styles = StyleSheet.create({
@@ -42,7 +41,7 @@ function NewsItem({ title, description, imageUrl, pubDate, onPress }) {
         <View style={styles.textContainer}>
           <Text style={styles.title}>{stringOrPlaceholder(title)}</Text>
           <Text style={styles.description}>{stringOrPlaceholder(description)}</Text>
-          <Text style={styles.date}>{RFC2822ToTimeOrDate(pubDate)}</Text>
+          <Text style={styles.date}>{stringOrPlaceholder(pubDate)}</Text>
         </View>
         <View style={styles.imageContainer}>
           <Image resizeMode="cover" style={styles.image} source={{ uri: imageUrl }} />
@@ -52,4 +51,4 @@ function NewsItem({ title, description, imageUrl, pubDate, onPress }) {
   );
 }
 
-export default memo(NewsItem);
+export default memo(SavedNewsItem);

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import SavedArticleController from '../data/local/SavedArticleController';
-import NewsItem from '../components/NewsFeed/NewsItem';
 import ItemDivider from '../components/NewsFeed/ItemDivider';
 import useToast from '../hooks/useToast';
 import ListEmptyComponent from '../components/NewsFeed/ListEmptyComponent';
+import SavedNewsItem from '../components/SavedArticles/SavedNewsItem';
 
 function SavedArticlesScreen({ navigation }) {
   const [articles, setArticles] = useState([]);
@@ -23,10 +23,11 @@ function SavedArticlesScreen({ navigation }) {
   }, []);
 
   const _renderItem = ({ item }) => (
-    <NewsItem
+    <SavedNewsItem
       title={item?.title}
       description={item?.description}
       imageUrl={item?.imageUrl}
+      pubDate={item.pubDate}
       onPress={() => navigation.navigate('SavedArticleDetail', { guid: item.guid })}
     />
   );
