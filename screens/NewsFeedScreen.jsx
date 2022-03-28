@@ -19,8 +19,10 @@ function NewsFeedScreen({ navigation }) {
 
   useEffect(() => {
     (async () => {
-      const feed = await FeedController.getFeedById(Regions[region]);
-      setNewsItems(feed.rss.channel.item);
+      if (region) {
+        const feed = await FeedController.getFeedById(Regions[region]);
+        setNewsItems(feed.rss.channel.item);
+      }
     })();
   }, [region]);
 

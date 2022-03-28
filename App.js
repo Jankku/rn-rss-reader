@@ -60,7 +60,7 @@ export default function App() {
         updateLocation({ latitude, longitude });
       }
     })();
-  }, [hasLocationPermission, shouldUseLocation, updateLocation]);
+  }, [hasLocationPermission, shouldUseLocation]);
 
   useEffect(() => {
     (async () => {
@@ -69,7 +69,7 @@ export default function App() {
         : await RegionController.getRegion();
       updateRegion(newRegion);
     })();
-  }, [location, updateRegion]);
+  }, [location]);
 
   return (
     <SafeAreaProvider>
