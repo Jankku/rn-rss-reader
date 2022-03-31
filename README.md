@@ -1,6 +1,6 @@
-# RSS Reader
+# Yle RSS Reader
 
-Built with React Native and Expo. Uses Yle's RSS feeds.
+Built with React Native and Expo.
 
 ![Screenshots](screenshots.png)
 
