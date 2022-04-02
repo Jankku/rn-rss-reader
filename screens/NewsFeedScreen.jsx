@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useRef } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import Regions from '../data/Regions';
 import FeedController from '../data/FeedController';
 import NewsItem from '../components/NewsFeed/NewsItem';
@@ -44,24 +44,28 @@ function NewsFeedScreen({ navigation }) {
     />
   );
 
+  const _keyExtractor = (item) => item.guid['#text'];
+
+  const onRegionModalClose = () => setRegionModalVisible(false);
+
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <FlatList
         ref={listRef}
         data={newsItems}
-        keyExtractor={(item) => item.guid['#text']}
+        keyExtractor={_keyExtractor}
         ItemSeparatorComponent={ItemDivider}
         renderItem={_renderItem}
         ListEmptyComponent={<ListEmptyComponent text={"Couldn't find news"} />}
       />
 
-      <RegionModal
-        listRef={listRef}
-        isVisible={regionModalVisible}
-        onClose={() => setRegionModalVisible(false)}
-      />
+      <RegionModal listRef={listRef} isVisible={regionModalVisible} onClose={onRegionModalClose} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+});
 
 export default NewsFeedScreen;

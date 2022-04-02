@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { useEffect, useState, useCallback } from 'react';
-import { View, Share } from 'react-native';
+import { View, Share, StyleSheet } from 'react-native';
 import WebView from 'react-native-webview';
 import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
 import ArticleShareButton from '../components/NewsDetail/ArticleShareButton';
@@ -8,11 +8,11 @@ import SavedArticleController from '../data/local/SavedArticleController';
 import useToast from '../hooks/useToast';
 
 function SavedArticleDetailScreen({ navigation, route }) {
-  const guid = route.params.guid;
   const { showToast } = useToast();
   const { colors } = useTheme();
   const [article, setArticle] = useState();
   const [isSaved, setIsSaved] = useState();
+  const guid = route.params.guid;
 
   useEffect(() => {
     const item = SavedArticleController.getArticleById(guid);
@@ -30,7 +30,7 @@ function SavedArticleDetailScreen({ navigation, route }) {
         headerRight: () => (
           <>
             <ArticleShareButton
-              style={{ marginRight: 24 }}
+              style={styles.shareButton}
               color={colors.headerText}
               onPress={() => shareArticleAction()}
             />
@@ -67,7 +67,7 @@ function SavedArticleDetailScreen({ navigation, route }) {
   }, [article, showToast]);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       {article ? (
         <WebView
           source={{
@@ -78,5 +78,10 @@ function SavedArticleDetailScreen({ navigation, route }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  shareButton: { marginRight: 24 },
+});
 
 export default SavedArticleDetailScreen;

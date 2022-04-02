@@ -15,7 +15,7 @@ function SavedArticlesScreen({ navigation }) {
 
     try {
       items.addListener(() => setArticles([...items]));
-    } catch (ignored) {
+    } catch (_) {
       showToast('Error loading saved articles');
     }
 
@@ -32,11 +32,13 @@ function SavedArticlesScreen({ navigation }) {
     />
   );
 
+  const _keyExtractor = (item) => item.guid;
+
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <FlatList
         data={articles}
-        keyExtractor={(item) => item.guid}
+        keyExtractor={_keyExtractor}
         ItemSeparatorComponent={ItemDivider}
         renderItem={_renderItem}
         ListEmptyComponent={<ListEmptyComponent text={'Save some articles'} />}
@@ -47,6 +49,7 @@ function SavedArticlesScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  container: { flex: 1 },
   listContainerStyle: { alignItems: 'center', flexGrow: 1, justifyContent: 'center' },
 });
 

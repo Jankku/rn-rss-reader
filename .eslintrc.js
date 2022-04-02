@@ -23,6 +23,7 @@ module.exports = {
   ignorePatterns: ['node_modules', 'android', '.expo', '.expo-shared', '*.config.js'],
   rules: {
     'react/prop-types': 'off',
+    'react-native/no-unused-styles': 'off',
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
   settings: {

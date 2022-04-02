@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useTheme } from '@react-navigation/native';
-import { View, Share } from 'react-native';
+import { View, Share, StyleSheet } from 'react-native';
 import WebView from 'react-native-webview';
 import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
 import FeedController from '../data/FeedController';
@@ -9,11 +9,12 @@ import useToast from '../hooks/useToast';
 import ArticleShareButton from '../components/NewsDetail/ArticleShareButton';
 
 function NewsDetailScreen({ navigation, route }) {
-  const guid = route.params?.guid;
   const { colors } = useTheme();
   const { showToast } = useToast();
   const [article, setArticle] = useState();
   const [isSaved, setIsSaved] = useState();
+  const guid = route.params?.guid;
+  const styles = makeStyles(colors);
   const openWebView = article && article.encoded === undefined;
   const bodyFontSize = '2.25rem';
   const figureFontSize = '2.0rem';
@@ -34,7 +35,7 @@ function NewsDetailScreen({ navigation, route }) {
         headerRight: () => (
           <>
             <ArticleShareButton
-              style={{ marginRight: 24 }}
+              style={styles.shareButton}
               color={colors.headerText}
               onPress={() => shareArticleAction()}
             />
@@ -61,6 +62,7 @@ function NewsDetailScreen({ navigation, route }) {
     navigation,
     saveArticleAction,
     shareArticleAction,
+    styles.shareButton,
   ]);
 
   const saveArticleAction = useCallback(() => {
@@ -121,7 +123,7 @@ function NewsDetailScreen({ navigation, route }) {
     `;
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       {openWebView ? (
         <WebView
           source={{
@@ -137,13 +139,20 @@ function NewsDetailScreen({ navigation, route }) {
           source={{
             html: article.encoded,
           }}
-          style={{
-            backgroundColor: colors.card,
-          }}
+          style={styles.webView}
         />
       ) : null}
     </View>
   );
 }
+
+const makeStyles = (colors) =>
+  StyleSheet.create({
+    container: { flex: 1 },
+    shareButton: { marginRight: 24 },
+    webView: {
+      backgroundColor: colors.card,
+    },
+  });
 
 export default NewsDetailScreen;

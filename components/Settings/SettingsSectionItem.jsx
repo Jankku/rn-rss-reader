@@ -3,13 +3,7 @@ import { Pressable, StyleSheet } from 'react-native';
 
 function SettingsSectionItem({ onPress, children }) {
   const { colors } = useTheme();
-
-  const styles = StyleSheet.create({
-    container: {
-      backgroundColor: colors.card,
-      padding: 16,
-    },
-  });
+  const styles = makeStyles(colors);
 
   return (
     <Pressable onPress={onPress} style={styles.container}>
@@ -17,5 +11,13 @@ function SettingsSectionItem({ onPress, children }) {
     </Pressable>
   );
 }
+
+const makeStyles = (colors) =>
+  StyleSheet.create({
+    container: {
+      backgroundColor: colors.card,
+      padding: 16,
+    },
+  });
 
 export default SettingsSectionItem;

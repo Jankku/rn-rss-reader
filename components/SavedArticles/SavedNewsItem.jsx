@@ -6,29 +6,7 @@ import { stringOrPlaceholder } from '../../utils/stringutils';
 
 function SavedNewsItem({ title, description, imageUrl, pubDate, onPress }) {
   const { colors, dark } = useTheme();
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      flexDirection: 'row',
-      paddingHorizontal: 12,
-      paddingVertical: 16,
-      width: Dimensions.get('window').width,
-    },
-    date: { color: colors.text, fontSize: 12 },
-    description: { color: colors.text, paddingBottom: 6 },
-    image: {
-      backgroundColor: `rgba(${dark ? '255, 255, 255' : '0, 0, 0'}, 0.1)`,
-      borderRadius: 8,
-      height: 100,
-      marginLeft: 4,
-      marginTop: 6,
-      width: 100,
-    },
-    imageContainer: { paddingLeft: 4 },
-    textContainer: { flex: 1 },
-    title: { color: colors.text, fontWeight: '700', paddingBottom: 4 },
-  });
+  const styles = makeStyles(colors, dark);
 
   return (
     <Pressable
@@ -50,5 +28,29 @@ function SavedNewsItem({ title, description, imageUrl, pubDate, onPress }) {
     </Pressable>
   );
 }
+
+const makeStyles = (colors, dark) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: 'row',
+      paddingHorizontal: 12,
+      paddingVertical: 16,
+      width: Dimensions.get('window').width,
+    },
+    date: { color: colors.text, fontSize: 12 },
+    description: { color: colors.text, paddingBottom: 6 },
+    image: {
+      backgroundColor: `rgba(${dark ? '255, 255, 255' : '0, 0, 0'}, 0.1)`,
+      borderRadius: 8,
+      height: 100,
+      marginLeft: 4,
+      marginTop: 6,
+      width: 100,
+    },
+    imageContainer: { paddingLeft: 4 },
+    textContainer: { flex: 1 },
+    title: { color: colors.text, fontWeight: '700', paddingBottom: 4 },
+  });
 
 export default memo(SavedNewsItem);

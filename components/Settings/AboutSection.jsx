@@ -34,6 +34,7 @@ const aboutSectionData = [
 
 function AboutSection() {
   const { colors } = useTheme();
+  const styles = makeStyles(colors);
 
   const openLink = (item) => {
     if (item.link) openBrowserAsync(item.link);
@@ -53,7 +54,21 @@ function AboutSection() {
 
   const _renderSectionHeader = ({ section: { title } }) => <SettingsSectionHeader title={title} />;
 
-  const styles = StyleSheet.create({
+  const _keyExtractor = (item, index) => item + index;
+
+  return (
+    <SectionList
+      sections={aboutSectionData}
+      renderSectionHeader={_renderSectionHeader}
+      renderItem={_renderItem}
+      keyExtractor={_keyExtractor}
+      ItemSeparatorComponent={ItemDivider}
+    />
+  );
+}
+
+const makeStyles = (colors) =>
+  StyleSheet.create({
     container: {
       alignContent: 'center',
       alignItems: 'center',
@@ -71,16 +86,5 @@ function AboutSection() {
       color: colors.text,
     },
   });
-
-  return (
-    <SectionList
-      sections={aboutSectionData}
-      renderSectionHeader={_renderSectionHeader}
-      renderItem={_renderItem}
-      keyExtractor={(item, index) => item + index}
-      ItemSeparatorComponent={ItemDivider}
-    />
-  );
-}
 
 export default AboutSection;
