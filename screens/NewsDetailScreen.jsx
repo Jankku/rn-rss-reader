@@ -1,11 +1,12 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useTheme } from '@react-navigation/native';
-import { View } from 'react-native';
+import { View, Share } from 'react-native';
 import WebView from 'react-native-webview';
 import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
 import FeedController from '../data/FeedController';
 import SavedArticleController from '../data/local/SavedArticleController';
 import useToast from '../hooks/useToast';
+import ArticleShareButton from '../components/NewsDetail/ArticleShareButton';
 
 function NewsDetailScreen({ navigation, route }) {
   const guid = route.params?.guid;
@@ -31,21 +32,36 @@ function NewsDetailScreen({ navigation, route }) {
         title: article.title,
         headerTitleAlign: 'left',
         headerRight: () => (
-          <ArticleSaveButton
-            color={colors.headerText}
-            isSaved={isSaved}
-            onPress={() => {
-              if (article && isSaved) {
-                deleteArticleAction();
-              } else {
-                saveArticleAction();
-              }
-            }}
-          />
+          <>
+            <ArticleShareButton
+              style={{ marginRight: 24 }}
+              color={colors.headerText}
+              onPress={() => shareArticleAction()}
+            />
+            <ArticleSaveButton
+              color={colors.headerText}
+              isSaved={isSaved}
+              onPress={() => {
+                if (isSaved) {
+                  deleteArticleAction();
+                } else {
+                  saveArticleAction();
+                }
+              }}
+            />
+          </>
         ),
       });
     }
-  }, [article, colors.headerText, deleteArticleAction, isSaved, navigation, saveArticleAction]);
+  }, [
+    article,
+    colors.headerText,
+    deleteArticleAction,
+    isSaved,
+    navigation,
+    saveArticleAction,
+    shareArticleAction,
+  ]);
 
   const saveArticleAction = useCallback(() => {
     try {
@@ -53,9 +69,8 @@ function NewsDetailScreen({ navigation, route }) {
       SavedArticleController.saveArticle(dbArticle);
       setIsSaved(true);
       showToast('Article saved');
-    } catch (error) {
+    } catch (_) {
       showToast("Error: Couldn't save article");
-      console.error(error);
     }
   }, [article, showToast]);
 
@@ -65,11 +80,18 @@ function NewsDetailScreen({ navigation, route }) {
       SavedArticleController.deleteArticle(dbArticle);
       setIsSaved(false);
       showToast('Article deleted');
-    } catch (error) {
+    } catch (_) {
       showToast("Error: Couldn't delete article");
-      console.error(error);
     }
   }, [guid, showToast]);
+
+  const shareArticleAction = useCallback(async () => {
+    try {
+      if (article) await Share.share({ message: `${article.link}` });
+    } catch (_) {
+      showToast('Error while sharing article');
+    }
+  }, [article, showToast]);
 
   const injectedJS = `
     if (window.location.href === 'about:blank') {

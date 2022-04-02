@@ -1,8 +1,9 @@
 import { useTheme } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { useEffect, useState, useCallback } from 'react';
+import { View, Share } from 'react-native';
 import WebView from 'react-native-webview';
 import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
+import ArticleShareButton from '../components/NewsDetail/ArticleShareButton';
 import SavedArticleController from '../data/local/SavedArticleController';
 import useToast from '../hooks/useToast';
 
@@ -27,19 +28,26 @@ function SavedArticleDetailScreen({ navigation, route }) {
         title: article.title,
         headerTitleAlign: 'left',
         headerRight: () => (
-          <ArticleSaveButton
-            isSaved={isSaved}
-            color={colors.headerText}
-            onPress={() => {
-              if (article && isSaved) deleteArticleAction();
-            }}
-          />
+          <>
+            <ArticleShareButton
+              style={{ marginRight: 24 }}
+              color={colors.headerText}
+              onPress={() => shareArticleAction()}
+            />
+            <ArticleSaveButton
+              isSaved={isSaved}
+              color={colors.headerText}
+              onPress={() => {
+                if (isSaved) deleteArticleAction();
+              }}
+            />
+          </>
         ),
       });
     }
-  }, [article, isSaved]);
+  }, [article, colors.headerText, deleteArticleAction, isSaved, navigation, shareArticleAction]);
 
-  const deleteArticleAction = () => {
+  const deleteArticleAction = useCallback(() => {
     try {
       SavedArticleController.deleteArticle(article);
       setIsSaved(false);
@@ -48,7 +56,15 @@ function SavedArticleDetailScreen({ navigation, route }) {
     } catch (error) {
       showToast("Error: Couldn't delete article");
     }
-  };
+  }, [article, navigation, showToast]);
+
+  const shareArticleAction = useCallback(async () => {
+    try {
+      if (article) await Share.share({ message: `${article.link}` });
+    } catch (_) {
+      showToast('Error while sharing article');
+    }
+  }, [article, showToast]);
 
   return (
     <View style={{ flex: 1 }}>
