@@ -2,8 +2,7 @@ import { useTheme } from '@react-navigation/native';
 import { useEffect, useState, useCallback } from 'react';
 import { View, Share, StyleSheet } from 'react-native';
 import WebView from 'react-native-webview';
-import ArticleSaveButton from '../components/NewsDetail/ArticleSaveButton';
-import ArticleShareButton from '../components/NewsDetail/ArticleShareButton';
+import AppbarButton from '../components/NewsDetail/AppbarButton';
 import SavedArticleController from '../data/local/SavedArticleController';
 import useToast from '../hooks/useToast';
 
@@ -29,14 +28,13 @@ function SavedArticleDetailScreen({ navigation, route }) {
         headerTitleAlign: 'left',
         headerRight: () => (
           <>
-            <ArticleShareButton
+            <AppbarButton
+              icon={'share-social'}
               style={styles.shareButton}
-              color={colors.headerText}
               onPress={() => shareArticleAction()}
             />
-            <ArticleSaveButton
-              isSaved={isSaved}
-              color={colors.headerText}
+            <AppbarButton
+              icon={isSaved ? 'heart' : 'heart-outline'}
               onPress={() => {
                 if (isSaved) deleteArticleAction();
               }}
