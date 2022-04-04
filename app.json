@@ -2,7 +2,7 @@
   "expo": {
     "name": "RSS Reader",
     "slug": "rn-rss-reader",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "privacy": "hidden",
     "githubUrl": "https://github.com/Jankku/rn-rss-reader",
     "userInterfaceStyle": "automatic",
