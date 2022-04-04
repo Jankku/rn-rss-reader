@@ -24,13 +24,11 @@ function SavedArticleDetailScreen({ navigation, route }) {
   useEffect(() => {
     if (article) {
       navigation.setOptions({
-        title: article.title,
-        headerTitleAlign: 'left',
         headerRight: () => (
           <>
             <AppbarButton
-              icon={'share-social'}
-              style={styles.shareButton}
+              icon={'share-social-outline'}
+              style={styles.appbarButton}
               onPress={() => shareArticleAction()}
             />
             <AppbarButton
@@ -78,8 +76,8 @@ function SavedArticleDetailScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+  appbarButton: { marginRight: 24 },
   container: { flex: 1 },
-  shareButton: { marginRight: 24 },
 });
 
 export default SavedArticleDetailScreen;

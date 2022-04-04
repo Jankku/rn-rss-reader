@@ -30,8 +30,6 @@ function NewsDetailScreen({ navigation, route }) {
   useEffect(() => {
     if (article) {
       navigation.setOptions({
-        title: article.title,
-        headerTitleAlign: 'left',
         headerRight: () => (
           <>
             <AppbarButton
