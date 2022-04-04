@@ -6,6 +6,7 @@ import FeedController from '../data/FeedController';
 import SavedArticleController from '../data/local/SavedArticleController';
 import useToast from '../hooks/useToast';
 import AppbarButton from '../components/NewsDetail/AppbarButton';
+import { openBrowserAsync } from 'expo-web-browser';
 
 function NewsDetailScreen({ navigation, route }) {
   const { colors } = useTheme();
@@ -34,9 +35,14 @@ function NewsDetailScreen({ navigation, route }) {
         headerRight: () => (
           <>
             <AppbarButton
-              icon={'share-social'}
-              style={styles.shareButton}
+              icon={'share-social-outline'}
+              style={styles.appbarButton}
               onPress={() => shareArticleAction()}
+            />
+            <AppbarButton
+              icon={'globe-outline'}
+              style={styles.appbarButton}
+              onPress={() => openInWebAction()}
             />
             <AppbarButton
               icon={isSaved ? 'heart' : 'heart-outline'}
@@ -58,9 +64,10 @@ function NewsDetailScreen({ navigation, route }) {
     deleteArticleAction,
     isSaved,
     navigation,
+    openInWebAction,
     saveArticleAction,
     shareArticleAction,
-    styles.shareButton,
+    styles,
   ]);
 
   const saveArticleAction = useCallback(() => {
@@ -90,6 +97,14 @@ function NewsDetailScreen({ navigation, route }) {
       if (article) await Share.share({ message: `${article.link}` });
     } catch (_) {
       showToast('Error while sharing article');
+    }
+  }, [article, showToast]);
+
+  const openInWebAction = useCallback(async () => {
+    try {
+      if (article) await openBrowserAsync(article.link);
+    } catch (_) {
+      showToast('Error while opening article');
     }
   }, [article, showToast]);
 
@@ -146,8 +161,8 @@ function NewsDetailScreen({ navigation, route }) {
 
 const makeStyles = (colors) =>
   StyleSheet.create({
+    appbarButton: { marginRight: 24 },
     container: { flex: 1 },
-    shareButton: { marginRight: 24 },
     webView: {
       backgroundColor: colors.card,
     },
