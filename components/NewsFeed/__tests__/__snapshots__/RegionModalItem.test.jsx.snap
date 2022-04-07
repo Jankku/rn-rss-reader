@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test RegionModalItem Should match snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+>
+  <Text
+    style={
+      Object {
+        "color": "rgb(28, 28, 30)",
+        "paddingHorizontal": 16,
+        "paddingVertical": 12,
+      }
+    }
+  >
+    North Ostrobothnia
+  </Text>
+</View>
+`;

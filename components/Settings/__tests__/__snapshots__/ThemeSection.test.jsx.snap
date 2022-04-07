@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test ThemeSection Should match snapshot 1`] = `
+Array [
+  <Text
+    style={
+      Object {
+        "color": "rgb(28, 28, 30)",
+        "fontSize": 22,
+        "fontWeight": "700",
+        "paddingHorizontal": 16,
+        "paddingVertical": 8,
+      }
+    }
+  >
+    Theme
+  </Text>,
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgb(255, 255, 255)",
+        "padding": 16,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text />
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "rgb(28, 28, 30)",
+              "fontSize": 16,
+              "fontWeight": "700",
+            }
+          }
+        >
+          Dark mode
+        </Text>
+        <RCTSwitch
+          accessibilityRole="switch"
+          onChange={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "height": 31,
+              "width": 51,
+            }
+          }
+          thumbTintColor="rgb(0, 122, 255)"
+          value={false}
+        />
+      </View>
+    </View>
+  </View>,
+]
+`;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test ItemDivider Should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(216, 216, 216)",
+      "height": 1,
+    }
+  }
+/>
+`;

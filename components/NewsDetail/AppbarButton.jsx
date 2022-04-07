@@ -6,7 +6,7 @@ function AppbarButton({ icon, onPress, style }) {
   const { colors } = useTheme();
 
   return (
-    <Pressable style={style} onPress={onPress}>
+    <Pressable style={style} onPress={onPress} testID="AppbarButton">
       <Ionicons name={icon} size={24} color={colors.headerText} />
     </Pressable>
   );

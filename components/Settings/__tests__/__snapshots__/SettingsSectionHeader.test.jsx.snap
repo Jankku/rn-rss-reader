@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test SettingsSectionHeader Should match snapshot 1`] = `
+<Text
+  style={
+    Object {
+      "color": "rgb(28, 28, 30)",
+      "fontSize": 22,
+      "fontWeight": "700",
+      "paddingHorizontal": 16,
+      "paddingVertical": 8,
+    }
+  }
+>
+  About
+</Text>
+`;

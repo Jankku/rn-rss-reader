@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 function RegionMenuButton({ onPress, color }) {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} testID="RegionMenuButton">
       <Ionicons name={'funnel'} size={24} color={color} />
     </Pressable>
   );
