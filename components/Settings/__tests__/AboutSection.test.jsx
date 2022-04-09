@@ -1,5 +1,5 @@
 import AboutSection from '../AboutSection';
-import { render } from '@testing-library/react-native';
+import { render } from '../../../utils/testutils';
 
 describe('Test AboutSection', () => {
   test('Should match snapshot', () => {

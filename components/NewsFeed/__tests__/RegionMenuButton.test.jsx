@@ -1,5 +1,5 @@
 import RegionMenuButton from '../RegionMenuButton';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent } from '../../../utils/testutils';
 
 describe('Test RegionMenuButton', () => {
   test('Should match snapshot', () => {

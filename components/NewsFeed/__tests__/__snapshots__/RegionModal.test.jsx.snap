@@ -21,8 +21,8 @@ exports[`Test RegionModal Should match snapshot 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "rgb(242, 242, 242)",
-          "color": "rgb(28, 28, 30)",
+          "backgroundColor": "#FFFFFF",
+          "color": "#101010",
           "elevation": 5,
           "height": 667,
           "shadowOffset": Object {
@@ -38,9 +38,9 @@ exports[`Test RegionModal Should match snapshot 1`] = `
       <Text
         style={
           Object {
-            "borderBottomColor": "rgb(216, 216, 216)",
+            "borderBottomColor": "#dedede",
             "borderBottomWidth": 1,
-            "color": "rgb(28, 28, 30)",
+            "color": "#101010",
             "fontSize": 20,
             "fontWeight": "700",
             "paddingHorizontal": 16,
@@ -183,7 +183,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }
@@ -214,7 +214,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }
@@ -245,7 +245,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }
@@ -276,7 +276,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }
@@ -307,7 +307,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }
@@ -338,7 +338,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }
@@ -369,7 +369,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }
@@ -400,7 +400,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }
@@ -431,7 +431,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }
@@ -462,7 +462,7 @@ exports[`Test RegionModal Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "paddingHorizontal": 16,
                     "paddingVertical": 12,
                   }

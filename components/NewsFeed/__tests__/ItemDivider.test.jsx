@@ -1,5 +1,5 @@
 import ItemDivider from '../ItemDivider';
-import { render } from '@testing-library/react-native';
+import { render } from '../../../utils/testutils';
 
 describe('Test ItemDivider', () => {
   test('Should match snapshot', () => {

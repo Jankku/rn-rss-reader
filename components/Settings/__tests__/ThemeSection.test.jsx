@@ -1,5 +1,5 @@
 import ThemeSection from '../ThemeSection';
-import { render } from '@testing-library/react-native';
+import { render } from '../../../utils/testutils';
 
 describe('Test ThemeSection', () => {
   test('Should match snapshot', () => {

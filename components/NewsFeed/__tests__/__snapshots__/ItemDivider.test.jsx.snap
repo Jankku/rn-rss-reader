@@ -4,7 +4,7 @@ exports[`Test ItemDivider Should match snapshot 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "rgb(216, 216, 216)",
+      "backgroundColor": "#dedede",
       "height": 1,
     }
   }

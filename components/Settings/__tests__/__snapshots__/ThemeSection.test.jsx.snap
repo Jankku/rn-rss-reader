@@ -5,7 +5,7 @@ Array [
   <Text
     style={
       Object {
-        "color": "rgb(28, 28, 30)",
+        "color": "#101010",
         "fontSize": 22,
         "fontWeight": "700",
         "paddingHorizontal": 16,
@@ -30,7 +30,7 @@ Array [
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundColor": "#f7f7f7",
         "padding": 16,
       }
     }
@@ -57,7 +57,7 @@ Array [
         <Text
           style={
             Object {
-              "color": "rgb(28, 28, 30)",
+              "color": "#101010",
               "fontSize": 16,
               "fontWeight": "700",
             }
@@ -76,7 +76,7 @@ Array [
               "width": 51,
             }
           }
-          thumbTintColor="rgb(0, 122, 255)"
+          thumbTintColor="#0e65cc"
           value={false}
         />
       </View>

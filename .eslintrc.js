@@ -21,7 +21,15 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  ignorePatterns: ['node_modules', 'android', '.expo', '.expo-shared', '*.config.js', '__tests__'],
+  ignorePatterns: [
+    'node_modules',
+    'android',
+    '.expo',
+    '.expo-shared',
+    '*.config.js',
+    '*.setup.js',
+    '__tests__',
+  ],
   rules: {
     'react/prop-types': 'off',
     'react-native/no-unused-styles': 'off',

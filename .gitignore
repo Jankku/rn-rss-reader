@@ -12,6 +12,9 @@ web-build/
 .env
 credentials.json
 release/
+default.realm
+default.realm.lock
+default.realm.management
 
 # macOS
 .DS_Store

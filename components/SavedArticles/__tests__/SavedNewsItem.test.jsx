@@ -1,5 +1,5 @@
 import SavedNewsItem from '../SavedNewsItem';
-import { render, fireEvent, waitFor } from '@testing-library/react-native';
+import { render, fireEvent, waitFor } from '../../../utils/testutils';
 
 describe('Test SavedNewsItem', () => {
   test('Should match snapshot', () => {

@@ -1,5 +1,5 @@
 import SettingsSectionHeader from '../SettingsSectionHeader';
-import { render } from '@testing-library/react-native';
+import { render } from '../../../utils/testutils';
 
 describe('Test SettingsSectionHeader', () => {
   test('Should match snapshot', () => {

@@ -60,7 +60,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
       <Text
         style={
           Object {
-            "color": "rgb(28, 28, 30)",
+            "color": "#101010",
             "fontSize": 22,
             "fontWeight": "700",
             "paddingHorizontal": 16,
@@ -91,7 +91,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "backgroundColor": "rgb(255, 255, 255)",
+              "backgroundColor": "#f7f7f7",
               "padding": 16,
             }
           }
@@ -110,7 +110,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "fontSize": 16,
                     "fontWeight": "700",
                   }
@@ -121,7 +121,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                   }
                 }
               >
@@ -133,7 +133,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
         <View
           style={
             Object {
-              "backgroundColor": "rgb(216, 216, 216)",
+              "backgroundColor": "#dedede",
               "height": 1,
             }
           }
@@ -160,7 +160,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "backgroundColor": "rgb(255, 255, 255)",
+              "backgroundColor": "#f7f7f7",
               "padding": 16,
             }
           }
@@ -179,7 +179,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                     "fontSize": 16,
                     "fontWeight": "700",
                   }
@@ -190,7 +190,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
               <Text
                 style={
                   Object {
-                    "color": "rgb(28, 28, 30)",
+                    "color": "#101010",
                   }
                 }
               >
@@ -202,7 +202,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
         <View
           style={
             Object {
-              "backgroundColor": "rgb(216, 216, 216)",
+              "backgroundColor": "#dedede",
               "height": 1,
             }
           }
@@ -228,7 +228,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "backgroundColor": "rgb(255, 255, 255)",
+            "backgroundColor": "#f7f7f7",
             "padding": 16,
           }
         }
@@ -247,7 +247,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
             <Text
               style={
                 Object {
-                  "color": "rgb(28, 28, 30)",
+                  "color": "#101010",
                   "fontSize": 16,
                   "fontWeight": "700",
                 }
@@ -258,7 +258,7 @@ exports[`Test AboutSection Should match snapshot 1`] = `
             <Text
               style={
                 Object {
-                  "color": "rgb(28, 28, 30)",
+                  "color": "#101010",
                 }
               }
             >

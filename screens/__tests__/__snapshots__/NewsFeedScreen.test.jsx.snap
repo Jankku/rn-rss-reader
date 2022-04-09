@@ -1,0 +1,546 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test NewsFeedScreen Should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    ItemSeparatorComponent={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "compare": null,
+        "type": [Function],
+      }
+    }
+    ListEmptyComponent={
+      <ListEmptyComponent
+        text="Couldn't find news"
+      />
+    }
+    data={Array []}
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <Text
+        style={
+          Object {
+            "color": "#101010",
+            "fontSize": 16,
+            "fontWeight": "700",
+            "textAlign": "center",
+          }
+        }
+      >
+        Couldn't find news
+      </Text>
+    </View>
+  </RCTScrollView>
+  <Modal
+    animationType="fade"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    transparent={true}
+    visible={false}
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "position": "absolute",
+          "top": 55,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#FFFFFF",
+            "color": "#101010",
+            "elevation": 5,
+            "height": 667,
+            "shadowOffset": Object {
+              "height": 4,
+              "width": 0,
+            },
+            "shadowOpacity": 0.25,
+            "shadowRadius": 4,
+            "width": 750,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "borderBottomColor": "#dedede",
+              "borderBottomWidth": 1,
+              "color": "#101010",
+              "fontSize": 20,
+              "fontWeight": "700",
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          Choose region
+        </Text>
+        <RCTScrollView
+          data={
+            Array [
+              Array [
+                "Automatic",
+                "automatic",
+              ],
+              Array [
+                "Kotimaa",
+                "18-34837",
+              ],
+              Array [
+                "Ulkomaat",
+                "18-34953",
+              ],
+              Array [
+                "Lapland",
+                "18-139752",
+              ],
+              Array [
+                "North Ostrobothnia",
+                "18-148154",
+              ],
+              Array [
+                "Central Ostrobothnia",
+                "18-135629",
+              ],
+              Array [
+                "South Ostrobothnia",
+                "18-146311",
+              ],
+              Array [
+                "Ostrobothnia",
+                "18-148149",
+              ],
+              Array [
+                "Kainuu",
+                "18-141399",
+              ],
+              Array [
+                "North Karelia",
+                "18-141936",
+              ],
+              Array [
+                "South Karelia",
+                "18-141372",
+              ],
+              Array [
+                "North Savo",
+                "18-141764",
+              ],
+              Array [
+                "South Savo",
+                "18-141852",
+              ],
+              Array [
+                "Central Finland",
+                "18-148148",
+              ],
+              Array [
+                "Pirkanmaa",
+                "18-146831",
+              ],
+              Array [
+                "Satakunta",
+                "18-139772",
+              ],
+              Array [
+                "Päijät-Häme",
+                "18-141401",
+              ],
+              Array [
+                "Kanta-Häme",
+                "18-138727",
+              ],
+              Array [
+                "Kymenlaakso",
+                "18-131408",
+              ],
+              Array [
+                "Uusimaa",
+                "18-147345",
+              ],
+              Array [
+                "Southwest Finland",
+                "18-135507",
+              ],
+            ]
+          }
+          disableVirtualization={false}
+          getItem={[Function]}
+          getItemCount={[Function]}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          onContentSizeChange={[Function]}
+          onEndReachedThreshold={2}
+          onLayout={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          removeClippedSubviews={false}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          stickyHeaderIndices={Array []}
+          updateCellsBatchingPeriod={50}
+          viewabilityConfigCallbackPairs={Array []}
+          windowSize={21}
+        >
+          <View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  Automatic
+                </Text>
+              </View>
+            </View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  Kotimaa
+                </Text>
+              </View>
+            </View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  Ulkomaat
+                </Text>
+              </View>
+            </View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  Lapland
+                </Text>
+              </View>
+            </View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  North Ostrobothnia
+                </Text>
+              </View>
+            </View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  Central Ostrobothnia
+                </Text>
+              </View>
+            </View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  South Ostrobothnia
+                </Text>
+              </View>
+            </View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  Ostrobothnia
+                </Text>
+              </View>
+            </View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  Kainuu
+                </Text>
+              </View>
+            </View>
+            <View
+              onLayout={[Function]}
+              style={null}
+            >
+              <View
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#101010",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 12,
+                    }
+                  }
+                >
+                  North Karelia
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Object {
+                  "height": 0,
+                }
+              }
+            />
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </Modal>
+</View>
+`;

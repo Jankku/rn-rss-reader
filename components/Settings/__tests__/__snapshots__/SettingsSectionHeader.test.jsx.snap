@@ -4,7 +4,7 @@ exports[`Test SettingsSectionHeader Should match snapshot 1`] = `
 <Text
   style={
     Object {
-      "color": "rgb(28, 28, 30)",
+      "color": "#101010",
       "fontSize": 22,
       "fontWeight": "700",
       "paddingHorizontal": 16,

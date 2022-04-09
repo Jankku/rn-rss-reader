@@ -1,5 +1,5 @@
 import ListEmptyComponent from '../ListEmptyComponent';
-import { render } from '@testing-library/react-native';
+import { render } from '../../../utils/testutils';
 
 describe('Test ListEmptyComponent', () => {
   test('Should match snapshot', () => {

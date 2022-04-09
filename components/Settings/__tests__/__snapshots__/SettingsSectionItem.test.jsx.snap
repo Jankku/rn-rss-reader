@@ -16,7 +16,7 @@ exports[`Test SettingsSectionItem Should match snapshot 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "rgb(255, 255, 255)",
+      "backgroundColor": "#f7f7f7",
       "padding": 16,
     }
   }

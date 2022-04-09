@@ -1,6 +1,5 @@
 import RegionModal from '../RegionModal';
-import { render } from '@testing-library/react-native';
-import Regions from '../../../data/Regions';
+import { render } from '../../../utils/testutils';
 
 describe('Test RegionModal', () => {
   const listRef = {
