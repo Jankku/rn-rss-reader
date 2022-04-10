@@ -1,23 +1,41 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useTheme } from '@react-navigation/native';
-import { View, Share, StyleSheet } from 'react-native';
+import { View, Share, StyleSheet, useWindowDimensions } from 'react-native';
 import WebView from 'react-native-webview';
 import FeedController from '../data/FeedController';
 import SavedArticleController from '../data/local/SavedArticleController';
 import useToast from '../hooks/useToast';
 import AppbarButton from '../components/NewsDetail/AppbarButton';
 import { openBrowserAsync } from 'expo-web-browser';
+import * as Progress from 'react-native-progress';
+import useDebounce from '../hooks/useDebounce';
 
 function NewsDetailScreen({ navigation, route }) {
   const { colors } = useTheme();
   const { showToast } = useToast();
   const [article, setArticle] = useState();
   const [isSaved, setIsSaved] = useState();
-  const guid = route.params?.guid;
+  const [scrollValue, setScrollValue] = useState({
+    contentHeight: 1,
+    currentScrollY: 0,
+    layoutHeight: 0,
+  });
+  const debouncedScrollValue = useDebounce(scrollValue, 10);
+  const [articleProgress, setArticleProgress] = useState(0);
   const styles = makeStyles(colors);
+  const guid = route.params?.guid;
   const openWebView = article && article.encoded === undefined;
+  const windowWidth = useWindowDimensions().width;
   const bodyFontSize = '2.25rem';
   const figureFontSize = '2.0rem';
+
+  useEffect(() => {
+    const articleProgress = Math.abs(
+      debouncedScrollValue.currentScrollY /
+        (debouncedScrollValue.layoutHeight - debouncedScrollValue.contentHeight)
+    );
+    setArticleProgress(articleProgress);
+  }, [debouncedScrollValue]);
 
   useEffect(() => {
     const item = FeedController.findItemById(guid);
@@ -142,16 +160,38 @@ function NewsDetailScreen({ navigation, route }) {
           }}
         />
       ) : article?.encoded ? (
-        <WebView
-          injectedJavaScriptForMainFrameOnly
-          scalesPageToFit
-          injectedJavaScript={injectedJS}
-          originWhitelist={['*']}
-          source={{
-            html: article.encoded,
-          }}
-          style={styles.webView}
-        />
+        <>
+          <Progress.Bar
+            progress={articleProgress}
+            width={windowWidth}
+            height={3}
+            unfilledColor={colors.card}
+            color={colors.progressBar}
+            borderWidth={0}
+            borderRadius={0}
+            useNativeDriver={true}
+          />
+          <WebView
+            injectedJavaScriptForMainFrameOnly
+            scalesPageToFit
+            injectedJavaScript={injectedJS}
+            originWhitelist={['*']}
+            onLayout={({ nativeEvent }) =>
+              setScrollValue({ ...scrollValue, layoutHeight: nativeEvent.layout.height })
+            }
+            onScroll={({ nativeEvent }) =>
+              setScrollValue({
+                ...scrollValue,
+                contentHeight: nativeEvent.contentSize.height,
+                currentScrollY: nativeEvent.contentOffset.y,
+              })
+            }
+            source={{
+              html: article.encoded,
+            }}
+            style={styles.webView}
+          />
+        </>
       ) : null}
     </View>
   );

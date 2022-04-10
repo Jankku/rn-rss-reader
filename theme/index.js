@@ -10,6 +10,7 @@ export const lightTheme = {
     text: '#101010',
     headerText: '#FFFFFF',
     border: '#dedede',
+    progressBar: '#0a3b77',
   },
 };
 
@@ -23,5 +24,6 @@ export const darkTheme = {
     text: '#e6e6e6',
     headerText: '#e6e6e6',
     border: '#292e33',
+    progressBar: '#5792d9',
   },
 };
