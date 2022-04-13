@@ -1,5 +1,5 @@
 import AboutSection from '../AboutSection';
-import { render } from '../../../utils/testutils';
+import { render } from 'testutils';
 
 describe('Test AboutSection', () => {
   test('Should match snapshot', () => {

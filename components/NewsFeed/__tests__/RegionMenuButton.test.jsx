@@ -1,5 +1,5 @@
 import RegionMenuButton from '../RegionMenuButton';
-import { render, fireEvent } from '../../../utils/testutils';
+import { render, fireEvent } from 'testutils';
 
 describe('Test RegionMenuButton', () => {
   test('Should match snapshot', () => {

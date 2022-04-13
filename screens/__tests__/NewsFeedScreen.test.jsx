@@ -1,5 +1,5 @@
 import NewsFeedScreen from '../NewsFeedScreen';
-import { render } from '../../utils/testutils';
+import { render } from 'testutils';
 
 const data = `<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
 <channel>

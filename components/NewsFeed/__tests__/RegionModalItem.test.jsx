@@ -1,5 +1,5 @@
 import RegionModalItem from '../RegionModalItem';
-import { render, fireEvent } from '../../../utils/testutils';
+import { render, fireEvent } from 'testutils';
 
 describe('Test RegionModalItem', () => {
   test('Should match snapshot', () => {

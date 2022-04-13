@@ -1,5 +1,5 @@
 import AppbarButton from '../AppbarButton';
-import { render, fireEvent } from '../../../utils/testutils';
+import { render, fireEvent } from 'testutils';
 
 describe('Test AppbarButton', () => {
   test('Should match snapshot', () => {

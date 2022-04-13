@@ -1,5 +1,5 @@
 import ItemDivider from '../ItemDivider';
-import { render } from '../../../utils/testutils';
+import { render } from 'testutils';
 
 describe('Test ItemDivider', () => {
   test('Should match snapshot', () => {

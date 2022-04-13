@@ -1,6 +1,6 @@
 import { Text } from 'react-native';
 import SettingsSectionItem from '../SettingsSectionItem';
-import { render, fireEvent } from '../../../utils/testutils';
+import { render, fireEvent } from 'testutils';
 
 describe('Test SettingsSectionItem', () => {
   test('Should match snapshot', () => {

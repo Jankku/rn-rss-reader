@@ -1,5 +1,5 @@
 import SavedArticlesScreen from '../SavedArticlesScreen';
-import { render } from '../../utils/testutils';
+import { render } from 'testutils';
 
 describe('Test SavedArticlesScreen', () => {
   test('Should match snapshot', () => {

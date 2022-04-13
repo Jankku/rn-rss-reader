@@ -1,5 +1,5 @@
 import SettingsSectionHeader from '../SettingsSectionHeader';
-import { render } from '../../../utils/testutils';
+import { render } from 'testutils';
 
 describe('Test SettingsSectionHeader', () => {
   test('Should match snapshot', () => {

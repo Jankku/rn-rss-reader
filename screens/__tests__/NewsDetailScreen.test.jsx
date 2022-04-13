@@ -1,5 +1,5 @@
 import NewsDetailScreen from '../NewsDetailScreen';
-import { render } from '../../utils/testutils';
+import { render } from 'testutils';
 
 const articleData = {
   category: ['Category1', 'Category2', 'Category3'],

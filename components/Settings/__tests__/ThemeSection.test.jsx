@@ -1,5 +1,5 @@
 import ThemeSection from '../ThemeSection';
-import { render } from '../../../utils/testutils';
+import { render } from 'testutils';
 
 describe('Test ThemeSection', () => {
   test('Should match snapshot', () => {

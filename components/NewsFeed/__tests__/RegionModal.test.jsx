@@ -1,5 +1,5 @@
 import RegionModal from '../RegionModal';
-import { render } from '../../../utils/testutils';
+import { render } from 'testutils';
 
 describe('Test RegionModal', () => {
   const listRef = {

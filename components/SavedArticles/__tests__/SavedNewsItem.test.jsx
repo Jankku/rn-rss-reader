@@ -1,5 +1,5 @@
 import SavedNewsItem from '../SavedNewsItem';
-import { render, fireEvent, waitFor } from '../../../utils/testutils';
+import { render, fireEvent, waitFor } from 'testutils';
 
 describe('Test SavedNewsItem', () => {
   test('Should match snapshot', () => {

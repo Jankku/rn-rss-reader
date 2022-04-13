@@ -1,5 +1,5 @@
 import ListEmptyComponent from '../ListEmptyComponent';
-import { render } from '../../../utils/testutils';
+import { render } from 'testutils';
 
 describe('Test ListEmptyComponent', () => {
   test('Should match snapshot', () => {

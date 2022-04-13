@@ -1,5 +1,5 @@
 import NewsItem from '../NewsItem';
-import { render, fireEvent, waitFor } from '../../../utils/testutils';
+import { render, fireEvent, waitFor } from 'testutils';
 import { Settings } from 'luxon';
 
 describe('Test NewsItem', () => {
