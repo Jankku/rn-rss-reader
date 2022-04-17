@@ -34,3 +34,15 @@ sdk.dir=C\:\\Users\\Username\\AppData\\Local\\Android\\Sdk
 - Run `adb devices` in terminal to confirm ADB connection.
 - Run `npm run android` in terminal to build the app.
 - Development client should be installed to your device and the app launched.
+
+## Testing
+
+Run the following command in terminal to run tests:
+```
+npm test
+```
+
+To get test coverage run:
+```
+npm run coverage
+```

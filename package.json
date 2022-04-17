@@ -18,7 +18,8 @@
     "lint": "eslint --ext .js --ext .jsx .",
     "lint:fix": "eslint --fix --ext .js --ext .jsx .",
     "format": "prettier --write .",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.15.0",
@@ -83,6 +84,16 @@
       "node_modules",
       "utils",
       "__dirname"
+    ],
+    "collectCoverageFrom": [
+      "./components/**",
+      "./context/**",
+      "./data/**",
+      "./hooks/**",
+      "./navigation/**",
+      "./screens/**",
+      "./utils/**",
+      "!**/__tests__/**"
     ]
   }
 }
