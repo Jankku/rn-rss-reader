@@ -40,11 +40,11 @@ function NewsFeedScreen({ navigation }) {
       description={item?.description}
       imageUrl={item?.enclosure?.url}
       pubDate={item.pubDate}
-      onPress={() => navigation.navigate('NewsDetail', { guid: item.guid['#text'] })}
+      onPress={() => navigation.navigate('NewsDetail', { guid: item.link })}
     />
   );
 
-  const _keyExtractor = (item) => item.guid['#text'];
+  const _keyExtractor = (item) => item.link;
 
   const onRegionModalClose = () => setRegionModalVisible(false);
 

@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { Dimensions, Image, Pressable, Text, View } from 'react-native';
 import { stringOrPlaceholder } from '../../utils/stringutils';
+import { RFC2822ToDateTime } from '../../utils/dateutils';
 
 function SavedNewsItem({ title, description, imageUrl, pubDate, onPress }) {
   const { colors, dark } = useTheme();
@@ -19,7 +20,7 @@ function SavedNewsItem({ title, description, imageUrl, pubDate, onPress }) {
         <View style={styles.textContainer}>
           <Text style={styles.title}>{stringOrPlaceholder(title)}</Text>
           <Text style={styles.description}>{stringOrPlaceholder(description)}</Text>
-          <Text style={styles.date}>{stringOrPlaceholder(pubDate)}</Text>
+          <Text style={styles.date}>{stringOrPlaceholder(RFC2822ToDateTime(pubDate))}</Text>
         </View>
         <View style={styles.imageContainer}>
           <Image resizeMode="cover" style={styles.image} source={{ uri: imageUrl }} />

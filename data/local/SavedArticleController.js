@@ -23,7 +23,7 @@ const SavedArticleController = {
 
   articleToDbArticle(item) {
     return {
-      guid: item.guid['#text'],
+      guid: item.link,
       title: item.title,
       description: item.description,
       link: item.link,

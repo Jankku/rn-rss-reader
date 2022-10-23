@@ -24,7 +24,7 @@ const FeedController = {
     );
     const feedText = await response.text();
     const feedObj = this.parser.parse(feedText, true);
-    this.feed = feedObj;
+    this.feed = feedObj.rss.channel;
     return feedObj;
   },
 
@@ -33,7 +33,7 @@ const FeedController = {
    * @returns {object} News item
    */
   findItemById(guid) {
-    const item = this.feed.rss.channel.item.filter((item) => item.guid['#text'] === guid)[0];
+    const item = this.feed.item.filter((item) => item.link === guid)[0];
     if (item.encoded === undefined) return item;
 
     return this.itemToDisplayItem(item);
@@ -44,7 +44,6 @@ const FeedController = {
    */
   itemToDisplayItem(item) {
     const copy = { ...item };
-    copy.pubDate = RFC2822ToDateTime(copy.pubDate);
     copy.encoded = `<h2>${copy.title}</h2><h4>${copy.description}</h4><p>${copy.pubDate}</p>${copy.encoded}`;
     copy.encoded = String(copy.encoded).split(`src="//`).join('src="https://');
     return copy;
