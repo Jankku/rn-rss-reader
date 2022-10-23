@@ -135,8 +135,8 @@ android {
         applicationId 'com.jankku.rnrssreader'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 6
-        versionName "0.0.8"
+        versionCode 7
+        versionName "0.0.9"
         multiDexEnabled true
     }
     splits {
