@@ -5,7 +5,7 @@ function useToast() {
   const { colors } = useTheme();
 
   const defaultToastOptions = {
-    position: 100,
+    position: 120,
     opacity: 1,
     shadow: false,
     backgroundColor: colors.text,
